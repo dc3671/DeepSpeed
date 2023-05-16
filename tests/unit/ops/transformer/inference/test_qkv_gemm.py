@@ -97,8 +97,9 @@ def run_qkv_gemm_ds(
 
 
 @pytest.mark.inference_ops
+@pytest.mark.parametrize('execution_number', range(5))
 @pytest.mark.parametrize("dtype", [torch.float16])
-def test_qkv_gemm(dtype):
+def test_qkv_gemm(dtype, execution_number):
     input = torch.ones(
         (1, 1, 32),
         dtype=dtype,
