@@ -1,0 +1,883 @@
+---
+MainSourceFile:  '/home/baodi/workspace/DeepSpeed/third-party/csrc/includes/conversion_utils.h'
+Replacements:
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          113
+    Length:          0
+    ReplacementText: "#include <sycl/sycl.hpp>\n#include <dpct/dpct.hpp>\n"
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          143
+    Length:          23
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          1333
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          1343
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          2370
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:0: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          2648
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          2684
+    Length:          17
+    ReplacementText: 'sycl::vec<sycl::half, 1>{val}.convert<float, sycl::rounding_mode::automatic>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          2766
+    Length:          19
+    ReplacementText: 'sycl::vec<long long, 1>{val}.convert<double, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          2849
+    Length:          20
+    ReplacementText: 'sycl::vec<int, 1>{val}.convert<double, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          2933
+    Length:          20
+    ReplacementText: 'sycl::vec<int, 1>{val}.convert<double, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          3016
+    Length:          20
+    ReplacementText: 'sycl::vec<int, 1>{val}.convert<double, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          3101
+    Length:          20
+    ReplacementText: 'sycl::vec<unsigned long long, 1>{val}.convert<double, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          3186
+    Length:          21
+    ReplacementText: 'sycl::vec<unsigned int, 1>{val}.convert<double, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          3272
+    Length:          21
+    ReplacementText: 'sycl::vec<unsigned int, 1>{val}.convert<double, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          3357
+    Length:          21
+    ReplacementText: 'sycl::vec<unsigned int, 1>{val}.convert<double, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          3664
+    Length:          22
+    ReplacementText: 'sycl::vec<double, 1>{val}.convert<float, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          3723
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          3748
+    Length:          17
+    ReplacementText: 'sycl::vec<sycl::half, 1>{val}.convert<float, sycl::rounding_mode::automatic>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          3828
+    Length:          18
+    ReplacementText: 'sycl::vec<long long, 1>{val}.convert<float, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          3909
+    Length:          19
+    ReplacementText: 'sycl::vec<int, 1>{val}.convert<float, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          3991
+    Length:          19
+    ReplacementText: 'sycl::vec<int, 1>{val}.convert<float, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          4072
+    Length:          19
+    ReplacementText: 'sycl::vec<int, 1>{val}.convert<float, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          4155
+    Length:          19
+    ReplacementText: 'sycl::vec<unsigned long long, 1>{val}.convert<float, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          4238
+    Length:          20
+    ReplacementText: 'sycl::vec<unsigned int, 1>{val}.convert<float, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          4322
+    Length:          20
+    ReplacementText: 'sycl::vec<unsigned int, 1>{val}.convert<float, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          4405
+    Length:          20
+    ReplacementText: 'sycl::vec<unsigned int, 1>{val}.convert<float, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          4643
+    Length:          6
+    ReplacementText: 'sycl::float2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          4653
+    Length:          7
+    ReplacementText: 'sycl::half2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          4679
+    Length:          19
+    ReplacementText: 'val.convert<float, sycl::rounding_mode::automatic>()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          4918
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5050
+    Length:          0
+    ReplacementText: "    /*\n    DPCT1007:50: Migration of __double2half is not supported.\n    */\n"
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5114
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5148
+    Length:          17
+    ReplacementText: 'sycl::vec<float, 1>{val}.convert<sycl::half, sycl::rounding_mode::automatic>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5193
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5229
+    Length:          17
+    ReplacementText: 'sycl::vec<long long, 1>{val}.convert<sycl::half, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5274
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5310
+    Length:          18
+    ReplacementText: 'sycl::vec<int, 1>{val}.convert<sycl::half, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5356
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5392
+    Length:          20
+    ReplacementText: 'sycl::vec<short, 1>{val}.convert<sycl::half, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5440
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5475
+    Length:          18
+    ReplacementText: 'sycl::vec<int, 1>{val}.convert<sycl::half, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5521
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5558
+    Length:          18
+    ReplacementText: 'sycl::vec<unsigned long long, 1>{val}.convert<sycl::half, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5604
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5641
+    Length:          19
+    ReplacementText: 'sycl::vec<unsigned int, 1>{val}.convert<sycl::half, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5688
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5725
+    Length:          21
+    ReplacementText: 'sycl::vec<unsigned short, 1>{val}.convert<sycl::half, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5774
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          5810
+    Length:          19
+    ReplacementText: 'sycl::vec<unsigned int, 1>{val}.convert<sycl::half, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          6076
+    Length:          7
+    ReplacementText: 'sycl::half2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          6087
+    Length:          6
+    ReplacementText: 'sycl::float2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          6112
+    Length:          22
+    ReplacementText: 'val.convert<sycl::half, sycl::rounding_mode::rte>()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          6162
+    Length:          7
+    ReplacementText: 'sycl::half2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          6197
+    Length:          21
+    ReplacementText: 'sycl::float2{val,val}.convert<sycl::half, sycl::rounding_mode::rte>()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          7935
+    Length:          19
+    ReplacementText: 'sycl::vec<double, 1>{val}.convert<long long, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          8017
+    Length:          18
+    ReplacementText: 'sycl::vec<float, 1>{val}.convert<long long, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          8074
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          8099
+    Length:          17
+    ReplacementText: 'sycl::vec<sycl::half, 1>{val}.convert<long long, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          8500
+    Length:          20
+    ReplacementText: 'sycl::vec<double, 1>{val}.convert<int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          8583
+    Length:          19
+    ReplacementText: 'sycl::vec<float, 1>{val}.convert<int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          8641
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          8666
+    Length:          18
+    ReplacementText: 'sycl::vec<sycl::half, 1>{val}.convert<int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          9069
+    Length:          20
+    ReplacementText: 'sycl::vec<double, 1>{val}.convert<int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          9152
+    Length:          19
+    ReplacementText: 'sycl::vec<float, 1>{val}.convert<int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          9210
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          9235
+    Length:          18
+    ReplacementText: 'sycl::vec<sycl::half, 1>{val}.convert<int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          9636
+    Length:          20
+    ReplacementText: 'sycl::vec<double, 1>{val}.convert<int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          9718
+    Length:          19
+    ReplacementText: 'sycl::vec<float, 1>{val}.convert<int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          9775
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          9800
+    Length:          18
+    ReplacementText: 'sycl::vec<sycl::half, 1>{val}.convert<int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          10204
+    Length:          20
+    ReplacementText: 'sycl::vec<double, 1>{val}.convert<unsigned long long, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          10288
+    Length:          19
+    ReplacementText: 'sycl::vec<float, 1>{val}.convert<unsigned long long, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          10347
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          10372
+    Length:          18
+    ReplacementText: 'sycl::vec<sycl::half, 1>{val}.convert<unsigned long long, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          10778
+    Length:          21
+    ReplacementText: 'sycl::vec<double, 1>{val}.convert<unsigned int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          10863
+    Length:          20
+    ReplacementText: 'sycl::vec<float, 1>{val}.convert<unsigned int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          10923
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          10948
+    Length:          19
+    ReplacementText: 'sycl::vec<sycl::half, 1>{val}.convert<unsigned int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          11356
+    Length:          21
+    ReplacementText: 'sycl::vec<double, 1>{val}.convert<unsigned int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          11441
+    Length:          20
+    ReplacementText: 'sycl::vec<float, 1>{val}.convert<unsigned int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          11501
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          11526
+    Length:          19
+    ReplacementText: 'sycl::vec<sycl::half, 1>{val}.convert<unsigned int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          11932
+    Length:          21
+    ReplacementText: 'sycl::vec<double, 1>{val}.convert<unsigned int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          12016
+    Length:          20
+    ReplacementText: 'sycl::vec<float, 1>{val}.convert<unsigned int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          12075
+    Length:          6
+    ReplacementText: 'sycl::half'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Offset:          12100
+    Length:          19
+    ReplacementText: 'sycl::vec<sycl::half, 1>{val}.convert<unsigned int, sycl::rounding_mode::rte>()[0]'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+MainSourceFilesDigest:
+  - MainSourceFile:  '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+    Digest:          1052cc3160abc35e26a2c48af7ec97ff
+DpctVersion:     17.0.0
+MainHelperFileName: dpct
+USMLevel:        ''
+FeatureMap:
+  device.hpp:
+    has_capability_or_fail:
+      IsCalled:        true
+      CallerSrcFiles:
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/csrc/layer_norm.cu'
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/csrc/softmax.cu'
+      SubFeatureMap:   {}
+    typedef_queue_ptr:
+      IsCalled:        true
+      CallerSrcFiles:
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/csrc/layer_norm.cu'
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/csrc/softmax.cu'
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/includes/inference_cuda_layers.h'
+      SubFeatureMap:   {}
+  dpct.hpp:
+    dpct_align_and_inline:
+      IsCalled:        true
+      CallerSrcFiles:
+        - '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+        - '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+        - '/home/baodi/workspace/DeepSpeed/csrc/includes/reduction_utils.h'
+      SubFeatureMap:   {}
+    dpct_compatibility_temp:
+      IsCalled:        true
+      CallerSrcFiles:
+        - '/home/baodi/workspace/DeepSpeed/csrc/includes/ds_kernel_utils.h'
+        - '/home/baodi/workspace/DeepSpeed/csrc/includes/reduction_utils.h'
+      SubFeatureMap:   {}
+    non_local_include_dependency:
+      IsCalled:        true
+      CallerSrcFiles:
+        - ''
+      SubFeatureMap:   {}
+  util.hpp:
+    err_types:
+      IsCalled:        true
+      CallerSrcFiles:
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/csrc/softmax.cu'
+      SubFeatureMap:   {}
+CompileTargets:  {}
+OptionMap:
+  AnalysisScopePath:
+    Value:           '/home/baodi/workspace/DeepSpeed'
+    Specified:       false
+  AsyncHandler:
+    Value:           'false'
+    Specified:       false
+  CommentsEnabled:
+    Value:           'false'
+    Specified:       false
+  CompilationsDir:
+    Value:           ''
+    Specified:       false
+  CtadEnabled:
+    Value:           'false'
+    Specified:       false
+  CustomHelperFileName:
+    Value:           dpct
+    Specified:       false
+  EnablepProfiling:
+    Value:           'false'
+    Specified:       false
+  ExperimentalFlag:
+    Value:           '0'
+    Specified:       false
+  ExplicitClNamespace:
+    Value:           'false'
+    Specified:       false
+  ExplicitNamespace:
+    Value:           '20'
+    Specified:       false
+  ExtensionDDFlag:
+    Value:           '0'
+    Specified:       false
+  ExtensionDEFlag:
+    Value:           '4294967295'
+    Specified:       false
+  NDRangeDim:
+    Value:           '3'
+    Specified:       false
+  NoDRYPattern:
+    Value:           'false'
+    Specified:       false
+  OptimizeMigration:
+    Value:           'false'
+    Specified:       false
+  ProcessAll:
+    Value:           'false'
+    Specified:       false
+  RuleFile:
+    Value:           ''
+    Specified:       false
+  SyclNamedLambda:
+    Value:           'false'
+    Specified:       false
+  UsmLevel:
+    Value:           '1'
+    Specified:       false
+...

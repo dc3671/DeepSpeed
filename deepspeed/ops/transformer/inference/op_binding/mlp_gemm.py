@@ -23,6 +23,15 @@ class MLPGemmOp(BaseOp):
         except AttributeError:
             self.mlp_gemm_func = None
 
+        TGREEN =  '\033[32m' # Green Text
+        ENDC = '\033[m' # reset to the defaults
+
+        # self.mlp_gemm_func = None
+        if self.mlp_gemm_func == None:
+            print('<<<< mlp_gemm_func fallback path <<<<')
+        else :
+            print(TGREEN + '<<<< mlp_gemm_func kernel injection path <<<<' + ENDC)
+
     def forward(self, input: torch.Tensor, residual: torch.Tensor, input_bias: torch.Tensor,
                 weight_interm: torch.Tensor, weight_out: torch.Tensor, bias: torch.Tensor, gamma: torch.Tensor,
                 beta: torch.Tensor):

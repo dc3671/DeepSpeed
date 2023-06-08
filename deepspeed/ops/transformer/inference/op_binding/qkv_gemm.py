@@ -24,6 +24,15 @@ class QKVGemmOp(BaseOp):
         except AttributeError:
             self.qkv_gemm_func = None
 
+        TGREEN =  '\033[32m' # Green Text
+        ENDC = '\033[m' # reset to the defaults
+
+        # self.qkv_gemm_func = None
+        if self.qkv_gemm_func == None:
+            print('<<<< qkv_gemm_func fallback path <<<<')
+        else :
+            print(TGREEN + '<<<< qkv_gemm_func kernel injection path <<<<' + ENDC)
+
     def forward(self,
                 input: torch.Tensor,
                 weight: torch.Tensor,

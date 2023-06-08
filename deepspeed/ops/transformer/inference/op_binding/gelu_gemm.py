@@ -22,6 +22,15 @@ class GELUGemmOp(BaseOp):
         except AttributeError:
             self.fused_gemm_gelu = None
 
+        TGREEN =  '\033[32m' # Green Text
+        ENDC = '\033[m' # reset to the defaults
+
+        # self.fused_gemm_gelu = None
+        if self.fused_gemm_gelu == None:
+            print('<<<< fused_gemm_gelu fallback path <<<<')
+        else :
+            print(TGREEN + '<<<< fused_gemm_gelu kernel injection path <<<<' + ENDC)
+
     def forward(self,
                 input: torch.Tensor,
                 weight: torch.Tensor,

@@ -62,7 +62,7 @@ def run_vector_matmul_ds(
 
 
 @pytest.mark.inference_ops
-@pytest.mark.parametrize("dtype", [torch.bfloat16])
+@pytest.mark.parametrize("dtype", [torch.float16])
 def test_vector_matmul(dtype):
     input = torch.randn(
         (1, 1, 32),

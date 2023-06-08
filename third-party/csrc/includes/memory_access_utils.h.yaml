@@ -1,0 +1,2530 @@
+---
+MainSourceFile:  '/home/baodi/workspace/DeepSpeed/third-party/csrc/includes/memory_access_utils.h'
+Replacements:
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          113
+    Length:          18
+    ReplacementText: "#include <sycl/sycl.hpp>\n#include <dpct/dpct.hpp>\n"
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          713
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          724
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          855
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          866
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          1011
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          1022
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          1111
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          1122
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          1272
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          1283
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          1413
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          1424
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          2288
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          2299
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          2358
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          2369
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          2548
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          2559
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          2647
+    Length:          53
+    ReplacementText: "lane_id = item_ct1.get_sub_group().get_local_linear_id();\n"
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: true
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          2700
+    Length:          1
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          2840
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          2851
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          2922
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          2953
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          2992
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:1: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          3077
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          3094
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          3111
+    Length:          9
+    ReplacementText: 'data[0].z()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          3128
+    Length:          9
+    ReplacementText: 'data[0].w()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          3289
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          3300
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          3387
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          3418
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          3457
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:2: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          3752
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          3769
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          3786
+    Length:          9
+    ReplacementText: 'data[0].z()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          3803
+    Length:          9
+    ReplacementText: 'data[0].w()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          4112
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          4123
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          4219
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          4250
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          4289
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:3: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          4374
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          4391
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          4408
+    Length:          9
+    ReplacementText: 'data[0].z()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          4425
+    Length:          9
+    ReplacementText: 'data[0].w()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          4586
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          4597
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          4855
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          4886
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          4925
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:4: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          5223
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          5240
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          5257
+    Length:          9
+    ReplacementText: 'data[0].z()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          5274
+    Length:          9
+    ReplacementText: 'data[0].w()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          5583
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          5594
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          5769
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          5800
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          5839
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:5: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          5924
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          5941
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          5958
+    Length:          9
+    ReplacementText: 'data[0].z()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          5975
+    Length:          9
+    ReplacementText: 'data[0].w()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          6136
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          6147
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          6414
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          6445
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          6484
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:6: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          6782
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          6799
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          6816
+    Length:          9
+    ReplacementText: 'data[0].z()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          6833
+    Length:          9
+    ReplacementText: 'data[0].w()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          7142
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          7153
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          7223
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          7254
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          7293
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:7: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          7370
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          7387
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          7548
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          7559
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          7645
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          7676
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          7715
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:8: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          7944
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          7961
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          8224
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          8235
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          8330
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          8361
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          8400
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:9: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          8477
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          8494
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          8655
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          8666
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          8921
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          8952
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          8991
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:10: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          9223
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          9240
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          9503
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          9514
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          9687
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          9718
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          9757
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:11: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          9834
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          9851
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          10012
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          10023
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          10287
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          10318
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          10357
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:12: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          10589
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          10606
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          10869
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          10880
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          11024
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:13: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          11221
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          11232
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          11392
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:14: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          11825
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          11836
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          12005
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:15: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          12202
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          12213
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          12542
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:16: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          12978
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          12989
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          13236
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:17: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          13433
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          13444
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          13782
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:18: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          14218
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          14229
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          14373
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:19: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          14570
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          14581
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          14741
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:20: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          15172
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          15183
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          15352
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:21: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          15549
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          15560
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          15889
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:22: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          16323
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          16334
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          16581
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:23: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          16778
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          16789
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          17127
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:24: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          17628
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          17639
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          18116
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          18127
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          18198
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          18229
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          18326
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:25: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          18408
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          18425
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          18442
+    Length:          9
+    ReplacementText: 'data[0].z()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          18459
+    Length:          9
+    ReplacementText: 'data[0].w()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          18624
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          18635
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          18722
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          18753
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          18850
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:26: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          19145
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          19162
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          19179
+    Length:          9
+    ReplacementText: 'data[0].z()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          19196
+    Length:          9
+    ReplacementText: 'data[0].w()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          19509
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          19520
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          19590
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          19621
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          19718
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:27: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          19792
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          19809
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          19974
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          19985
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          20071
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          20102
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          20199
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:28: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          20428
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          20445
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          20712
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          20723
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          20925
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:29: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          21123
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          21134
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          21352
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:30: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          21825
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          21836
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          21914
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          21951
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          21990
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:31: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          22103
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          22119
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          22135
+    Length:          9
+    ReplacementText: 'data[0].z()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          22151
+    Length:          9
+    ReplacementText: 'data[0].w()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          22300
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          22311
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          22490
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          22527
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          22566
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:32: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          22679
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          22695
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          22711
+    Length:          9
+    ReplacementText: 'data[0].z()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          22727
+    Length:          9
+    ReplacementText: 'data[0].w()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          22876
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          22887
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23072
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23109
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23148
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:33: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23261
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23277
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23293
+    Length:          9
+    ReplacementText: 'data[0].z()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23309
+    Length:          9
+    ReplacementText: 'data[0].w()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23458
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23469
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23546
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23583
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23622
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:34: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23727
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23743
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23864
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          23875
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          24052
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          24089
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          24128
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:35: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          24233
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          24249
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          24370
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          24381
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          24564
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          24601
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          24640
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:36: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          24745
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          24761
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          24882
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          24893
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          25050
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:37: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          25233
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          25244
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          25501
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:38: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          25684
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          25695
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          25958
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:39: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          26179
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          26190
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          26268
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          26305
+    Length:          5
+    ReplacementText: 'sycl::uint4'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          26402
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:40: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          26516
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          26532
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          26548
+    Length:          9
+    ReplacementText: 'data[0].z()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          26564
+    Length:          9
+    ReplacementText: 'data[0].w()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          26685
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          26696
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          26773
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          26810
+    Length:          5
+    ReplacementText: 'sycl::uint2'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          26907
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:41: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          27013
+    Length:          9
+    ReplacementText: 'data[0].x()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          27029
+    Length:          9
+    ReplacementText: 'data[0].y()'
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          27150
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          27161
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Offset:          27376
+    Length:          0
+    ReplacementText: "/*\n    DPCT1053:42: Migration of device assembly code is not supported.\n    */\n    "
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+MainSourceFilesDigest:
+  - MainSourceFile:  '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+    Digest:          67ef91af541e97fbba6c1776f972f0ed
+DpctVersion:     17.0.0
+MainHelperFileName: dpct
+USMLevel:        ''
+FeatureMap:
+  device.hpp:
+    has_capability_or_fail:
+      IsCalled:        true
+      CallerSrcFiles:
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/csrc/layer_norm.cu'
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/csrc/softmax.cu'
+      SubFeatureMap:   {}
+    typedef_queue_ptr:
+      IsCalled:        true
+      CallerSrcFiles:
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/csrc/layer_norm.cu'
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/csrc/softmax.cu'
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/includes/inference_cuda_layers.h'
+      SubFeatureMap:   {}
+  dpct.hpp:
+    dpct_align_and_inline:
+      IsCalled:        true
+      CallerSrcFiles:
+        - '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+        - '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+        - '/home/baodi/workspace/DeepSpeed/csrc/includes/reduction_utils.h'
+      SubFeatureMap:   {}
+    dpct_compatibility_temp:
+      IsCalled:        true
+      CallerSrcFiles:
+        - '/home/baodi/workspace/DeepSpeed/csrc/includes/ds_kernel_utils.h'
+        - '/home/baodi/workspace/DeepSpeed/csrc/includes/reduction_utils.h'
+      SubFeatureMap:   {}
+    non_local_include_dependency:
+      IsCalled:        true
+      CallerSrcFiles:
+        - ''
+      SubFeatureMap:   {}
+  util.hpp:
+    err_types:
+      IsCalled:        true
+      CallerSrcFiles:
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/csrc/softmax.cu'
+      SubFeatureMap:   {}
+CompileTargets:  {}
+OptionMap:
+  AnalysisScopePath:
+    Value:           '/home/baodi/workspace/DeepSpeed'
+    Specified:       false
+  AsyncHandler:
+    Value:           'false'
+    Specified:       false
+  CommentsEnabled:
+    Value:           'false'
+    Specified:       false
+  CompilationsDir:
+    Value:           ''
+    Specified:       false
+  CtadEnabled:
+    Value:           'false'
+    Specified:       false
+  CustomHelperFileName:
+    Value:           dpct
+    Specified:       false
+  EnablepProfiling:
+    Value:           'false'
+    Specified:       false
+  ExperimentalFlag:
+    Value:           '0'
+    Specified:       false
+  ExplicitClNamespace:
+    Value:           'false'
+    Specified:       false
+  ExplicitNamespace:
+    Value:           '20'
+    Specified:       false
+  ExtensionDDFlag:
+    Value:           '0'
+    Specified:       false
+  ExtensionDEFlag:
+    Value:           '4294967295'
+    Specified:       false
+  NDRangeDim:
+    Value:           '3'
+    Specified:       false
+  NoDRYPattern:
+    Value:           'false'
+    Specified:       false
+  OptimizeMigration:
+    Value:           'false'
+    Specified:       false
+  ProcessAll:
+    Value:           'false'
+    Specified:       false
+  RuleFile:
+    Value:           ''
+    Specified:       false
+  SyclNamedLambda:
+    Value:           'false'
+    Specified:       false
+  UsmLevel:
+    Value:           '1'
+    Specified:       false
+...

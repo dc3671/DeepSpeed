@@ -1,0 +1,181 @@
+---
+MainSourceFile:  '/home/baodi/workspace/DeepSpeed/third-party/csrc/includes/ds_kernel_utils.h'
+Replacements:
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/ds_kernel_utils.h'
+    Offset:          212
+    Length:          18
+    ReplacementText: "#include <sycl/sycl.hpp>\n#include <dpct/dpct.hpp>\n"
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/ds_kernel_utils.h'
+    Offset:          252
+    Length:          9
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/ds_kernel_utils.h'
+    Offset:          261
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/ds_kernel_utils.h'
+    Offset:          308
+    Length:          11
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/ds_kernel_utils.h'
+    Offset:          319
+    Length:          15
+    ReplacementText: __dpct_inline__
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/ds_kernel_utils.h'
+    Offset:          643
+    Length:          13
+    ReplacementText: DPCT_COMPATIBILITY_TEMP
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/ds_kernel_utils.h'
+    Offset:          760
+    Length:          13
+    ReplacementText: DPCT_COMPATIBILITY_TEMP
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+  - FilePath:        '/home/baodi/workspace/DeepSpeed/csrc/includes/ds_kernel_utils.h'
+    Offset:          866
+    Length:          32
+    ReplacementText: ''
+    ConstantFlag:    ''
+    ConstantOffset:  0
+    InitStr:         ''
+    NewHostVarName:  ''
+    BlockLevelFormatFlag: false
+MainSourceFilesDigest:
+  - MainSourceFile:  '/home/baodi/workspace/DeepSpeed/csrc/includes/ds_kernel_utils.h'
+    Digest:          badeae7ab94058f23a2a419c4d640343
+DpctVersion:     17.0.0
+MainHelperFileName: dpct
+USMLevel:        ''
+FeatureMap:
+  device.hpp:
+    has_capability_or_fail:
+      IsCalled:        true
+      CallerSrcFiles:
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/csrc/layer_norm.cu'
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/csrc/softmax.cu'
+      SubFeatureMap:   {}
+    typedef_queue_ptr:
+      IsCalled:        true
+      CallerSrcFiles:
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/csrc/layer_norm.cu'
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/csrc/softmax.cu'
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/includes/inference_cuda_layers.h'
+      SubFeatureMap:   {}
+  dpct.hpp:
+    dpct_align_and_inline:
+      IsCalled:        true
+      CallerSrcFiles:
+        - '/home/baodi/workspace/DeepSpeed/csrc/includes/conversion_utils.h'
+        - '/home/baodi/workspace/DeepSpeed/csrc/includes/memory_access_utils.h'
+        - '/home/baodi/workspace/DeepSpeed/csrc/includes/reduction_utils.h'
+      SubFeatureMap:   {}
+    dpct_compatibility_temp:
+      IsCalled:        true
+      CallerSrcFiles:
+        - '/home/baodi/workspace/DeepSpeed/csrc/includes/ds_kernel_utils.h'
+        - '/home/baodi/workspace/DeepSpeed/csrc/includes/reduction_utils.h'
+      SubFeatureMap:   {}
+    non_local_include_dependency:
+      IsCalled:        true
+      CallerSrcFiles:
+        - ''
+      SubFeatureMap:   {}
+  util.hpp:
+    err_types:
+      IsCalled:        true
+      CallerSrcFiles:
+        - '/home/baodi/workspace/DeepSpeed/csrc/transformer/inference/csrc/softmax.cu'
+      SubFeatureMap:   {}
+CompileTargets:  {}
+OptionMap:
+  AnalysisScopePath:
+    Value:           '/home/baodi/workspace/DeepSpeed'
+    Specified:       false
+  AsyncHandler:
+    Value:           'false'
+    Specified:       false
+  CommentsEnabled:
+    Value:           'false'
+    Specified:       false
+  CompilationsDir:
+    Value:           ''
+    Specified:       false
+  CtadEnabled:
+    Value:           'false'
+    Specified:       false
+  CustomHelperFileName:
+    Value:           dpct
+    Specified:       false
+  EnablepProfiling:
+    Value:           'false'
+    Specified:       false
+  ExperimentalFlag:
+    Value:           '0'
+    Specified:       false
+  ExplicitClNamespace:
+    Value:           'false'
+    Specified:       false
+  ExplicitNamespace:
+    Value:           '20'
+    Specified:       false
+  ExtensionDDFlag:
+    Value:           '0'
+    Specified:       false
+  ExtensionDEFlag:
+    Value:           '4294967295'
+    Specified:       false
+  NDRangeDim:
+    Value:           '3'
+    Specified:       false
+  NoDRYPattern:
+    Value:           'false'
+    Specified:       false
+  OptimizeMigration:
+    Value:           'false'
+    Specified:       false
+  ProcessAll:
+    Value:           'false'
+    Specified:       false
+  RuleFile:
+    Value:           ''
+    Specified:       false
+  SyclNamedLambda:
+    Value:           'false'
+    Specified:       false
+  UsmLevel:
+    Value:           '1'
+    Specified:       false
+...

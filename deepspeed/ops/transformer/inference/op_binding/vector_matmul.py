@@ -22,6 +22,15 @@ class VectorMatMulOp(BaseOp):
         except AttributeError:
             self.vector_matmul_func = None
 
+        TGREEN =  '\033[32m' # Green Text
+        ENDC = '\033[m' # reset to the defaults
+
+        # self.vector_matmul_func = None
+        if self.vector_matmul_func == None:
+            print('<<<< vector_matmul_func fallback path <<<<')
+        else :
+            print(TGREEN + '<<<< vector_matmul_func kernel injection path <<<<' + ENDC)
+
     def forward(self, input: torch.Tensor, weight: torch.Tensor, async_op: bool = False):
         q_scale = weight.scale if hasattr(weight, 'scale') else torch.empty(1)
         q_int8 = self.config.q_int8

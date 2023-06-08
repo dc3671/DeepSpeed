@@ -22,6 +22,15 @@ class ResidualAddOp(BaseOp):
         except AttributeError:
             self.residual_add_func = None
 
+        TGREEN =  '\033[32m' # Green Text
+        ENDC = '\033[m' # reset to the defaults
+
+        # self.residual_add_func = None
+        if self.residual_add_func == None:
+            print('<<<< residual_add_func fallback path <<<<')
+        else :
+            print(TGREEN + '<<<< residual_add_func kernel injection path <<<<' + ENDC)
+
     def forward(self, hidden_state: torch.Tensor, residual: torch.Tensor, attention_output: torch.Tensor,
                 attention_bias: torch.Tensor, final_bias: torch.Tensor, add_bias: bool, residual_add: torch.Tensor):
 

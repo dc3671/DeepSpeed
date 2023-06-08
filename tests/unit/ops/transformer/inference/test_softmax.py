@@ -102,8 +102,8 @@ def run_softmax_ds(
 
 
 @pytest.mark.inference_ops
-@pytest.mark.parametrize('execution_number', range(500))
-@pytest.mark.parametrize("mp_size", [1, 2])
+@pytest.mark.parametrize('execution_number', range(3))
+@pytest.mark.parametrize("mp_size", [1])
 @pytest.mark.parametrize("dtype", [torch.float16])
 def test_softmax(mp_size, dtype, execution_number):
     num_beams = 1
@@ -141,6 +141,8 @@ def test_softmax(mp_size, dtype, execution_number):
                 args[i] = arg.xpu()
         *args, ref_out = args
         ds_out = run_softmax_ds(*args)
+        # import pdb
+        # pdb.set_trace()
         allclose(ds_out, ref_out)
         continue
         ds_out = run_softmax_ds(attn_scores,

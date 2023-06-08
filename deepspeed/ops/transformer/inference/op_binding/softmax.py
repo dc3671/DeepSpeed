@@ -24,6 +24,15 @@ class SoftmaxOp(BaseOp):
         except AttributeError:
             self.softmax_func = None
 
+        TGREEN =  '\033[32m' # Green Text
+        ENDC = '\033[m' # reset to the defaults
+
+        # self.softmax_func  = None
+        if self.softmax_func  == None:
+            print('<<<< softmax_func fallback path <<<<')
+        else :
+            print(TGREEN + '<<<< softmax_func kernel injection path <<<<' + ENDC)
+
     def forward(self, attn_scores: torch.Tensor, attn_mask: torch.Tensor, alibi: torch.Tensor, triangular: bool,
                 recompute: bool, local_attention: bool, window_size: int, async_op: bool, layer_scale: float,
                 head_offset: int):
