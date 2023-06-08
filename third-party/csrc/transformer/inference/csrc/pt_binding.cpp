@@ -134,7 +134,7 @@ at::Tensor einsum_sec_sm_ecm(at::Tensor& Q, at::Tensor& W)
     auto options = at::TensorOptions()
                        .dtype(Q.options().dtype())
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
     T* workspace = (T*)InferenceContext::Instance().GetWorkSpace();
     float alpha = 1;
@@ -190,7 +190,7 @@ void attention_unfused(at::Tensor& prev_key_cont,
     auto options = at::TensorOptions()
                        .dtype(query_cont.options().dtype())
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
     float alpha = norm_factor;
     float gemm_beta = 0.0;
@@ -290,7 +290,7 @@ std::vector<at::Tensor> ds_softmax_context1(at::Tensor& query,
     auto options = at::TensorOptions()
                        .dtype(query_cont.options().dtype())
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
 
     auto output =
@@ -459,7 +459,7 @@ std::vector<at::Tensor> ds_softmax_context(at::Tensor& query_key_value,
     auto options = at::TensorOptions()
                        .dtype(query_key_value.options().dtype())
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
 
     T* workspace = (T*)InferenceContext::Instance().GetWorkSpace();
@@ -795,7 +795,7 @@ void quantized_gemm(void* output,
     auto options = at::TensorOptions()
                        .dtype(at::kHalf)
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
     auto tmp = torch::empty(weight.sizes(), options);
     T* weight16 = (T*)tmp.data_ptr();
@@ -878,7 +878,10 @@ at::Tensor qkv_unfused_cublas(at::Tensor& output,
                         (transposed_mode || q_int8) ? weight.size(0) : weight.size(1),
                         bsz,
                         InferenceContext::Instance().GetCurrentStream());
-    return torch::from_blob(workspace, input.sizes(), input.options());
+    
+    auto output_stride = c10::TensorType::contiguousStridesOf(input.sizes());
+    return at::from_blob(
+        workspace, input.sizes(),output_stride, nullptr, input.options(), input.device());
 }
 
 template <typename T>
@@ -904,10 +907,19 @@ std::vector<at::Tensor> ds_qkv_gemm(at::Tensor& input,
     auto options = at::TensorOptions()
                        .dtype(input.options().dtype())
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
+    
+    auto output_stride =
+        c10::TensorType::contiguousStridesOf({input.size(0), input.size(1), out_size});
 
-    auto output = at::from_blob(workspace, {input.size(0), input.size(1), out_size}, options);
+    auto output = at::from_blob(workspace, 
+                                {input.size(0), input.size(1), out_size}, 
+                                output_stride,
+                                nullptr,
+                                options,
+                                input.device());
+
     auto inp_norm = qkv_unfused_cublas<T>(output,
                                           input,
                                           weight,
@@ -935,7 +947,7 @@ void quantized_gemm(at::Tensor& output,
     auto options = at::TensorOptions()
                        .dtype(input.options().dtype())
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
     auto weight16 = at::empty({weight.size(0), weight.size(1)}, options);
 
@@ -984,7 +996,7 @@ at::Tensor ds_qkv_gemm_int8(at::Tensor& input,
     auto options = at::TensorOptions()
                        .dtype(input_cont.options().dtype())
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
 
     auto output = at::empty({input_cont.size(0), input_cont.size(1), weight.size(1)}, options);
@@ -1015,7 +1027,7 @@ at::Tensor ds_linear_layer(at::Tensor& input,
     auto options = at::TensorOptions()
                        .dtype(input_cont.options().dtype())
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
 
     int head_size = input_cont.size(2) / num_heads;
@@ -1222,7 +1234,7 @@ at::Tensor ds_linear_layer_int8(at::Tensor& input,
     auto options = at::TensorOptions()
                        .dtype(input_cont.options().dtype())
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
     int bsz = input_cont.size(0) * input_cont.size(1);
 
@@ -1248,13 +1260,21 @@ at::Tensor ds_vector_matmul(at::Tensor& input,
     auto options = at::TensorOptions()
                        .dtype(input.options().dtype())
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
     int out_size = q_int8 ? weight.size(0) : weight.size(1);
     int bsz = input.size(0) * input.size(1);
 
     T* workspace = (T*)InferenceContext::Instance().GetWorkSpace();
-    auto output = at::from_blob(workspace, {input.size(0), input.size(1), out_size}, options);
+    
+    auto output_stride =
+        c10::TensorType::contiguousStridesOf({input.size(0), input.size(1), out_size});
+    auto output = at::from_blob(workspace, 
+                                {input.size(0), input.size(1), out_size}, 
+                                output_stride,
+                                nullptr,
+                                options,
+                                input.device());
     if (q_int8) {
         quantized_gemm<T>(output.data_ptr(),
                           (T*)input.data_ptr(),
@@ -1300,7 +1320,7 @@ at::Tensor ds_vector_matmul_int8(at::Tensor& input,
     auto options = at::TensorOptions()
                        .dtype(input_cont.options().dtype())
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
 
     auto output = at::empty({input_cont.size(0), input_cont.size(1), weight.size(1)}, options);
@@ -1419,7 +1439,9 @@ at::Tensor mlp_unfused_cublas(at::Tensor& output,
 #endif
     }
 
-    return torch::from_blob(inp_norm, input.sizes(), input.options());
+    auto output_stride = c10::TensorType::contiguousStridesOf(input.sizes());
+    return at::from_blob(
+        inp_norm, input.sizes(), output_stride, nullptr, input.options(), input.device());
 }
 
 template <typename T>
@@ -1443,14 +1465,19 @@ std::vector<at::Tensor> ds_mlp_gemm(at::Tensor& input,
     auto options = at::TensorOptions()
                        .dtype(input.options().dtype())
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
 
     int out_size = (q_int8 || transposed_mode) ? weight_out.size(0) : weight_out.size(1);
+    auto output_stride =
+        c10::TensorType::contiguousStridesOf({input.size(0), input.size(1), out_size});
     auto output =
         at::from_blob((T*)InferenceContext::Instance().GetWorkSpace() + torch::numel(input),
                       {input.size(0), input.size(1), out_size},
-                      options);
+                      output_stride,
+                      nullptr,
+                      options,
+                      input.device());
     int bsz = input.size(0) * input.size(1);
 
     auto act_func_type = static_cast<ActivationFuncType>(activation_type);
@@ -1492,7 +1519,7 @@ std::vector<at::Tensor> ds_mlp_gemm_int8(at::Tensor& input,
     auto options = at::TensorOptions()
                        .dtype(input_cont.options().dtype())
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
 
     auto output = at::empty({input_cont.size(0), input_cont.size(1), weight.size(1)}, options);
@@ -1527,7 +1554,7 @@ at::Tensor fused_gemm_gelu(at::Tensor& input,
     auto options = at::TensorOptions()
                        .dtype(input.options().dtype())
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
 
     int intm_dim = (transposed_mode || q_int8) ? weight.size(0) : weight.size(1);
@@ -1707,7 +1734,7 @@ at::Tensor fused_gemm_gelu_int8(at::Tensor& input,
     auto options = at::TensorOptions()
                        .dtype(input_cont.options().dtype())
                        .layout(at::kStrided)
-                       .device(at::kCUDA)
+                       .device(at::kXPU)
                        .requires_grad(false);
 
     auto output = at::empty({input_cont.size(0), input_cont.size(1), weight.size(1)}, options);

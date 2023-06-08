@@ -231,14 +231,19 @@ public:
     /* } */
     dpct::queue_ptr GetCurrentStream(bool other_stream = false)
     {
+        auto type_ = c10::DeviceType::XPU;
+        c10::impl::VirtualGuardImpl impl(type_);
+        auto device_ = c10::Device(type_);
+        c10::Stream stream = impl.getStream(device_);
+        return &xpu::get_queue_from_stream(stream);
         // get current pytorch stream.
         
         /* if (other_stream) { */
         /*     if (!_stream) _stream = at::cuda::getStreamFromPool(true); */
         /*     return _stream; */
         /* } */
-        dpct::queue_ptr stream = &dpct::get_default_queue();
-        return stream;
+        /* dpct::queue_ptr stream = &dpct::get_default_queue(); */
+        /* return stream; */
     }
 
     void release_workspace()
