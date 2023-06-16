@@ -1,0 +1,51 @@
+---                                                    # [YAML syntax] Begin the document
+- Rule: rule_forceinline                               # Rule to migrate "__forceinline__" to "inline"
+  Kind: Macro                                          # Rule type
+  Priority: Takeover                                   # Rule priority
+  In: __forceinline__                                  # Target macro name in the input source code
+  Out: inline                                          # Migrated name of the macro in the output source code
+  Includes: ["header1.h", "\"header2.h\""]             # List of header file names which the new macro depends on
+- Rule: rule_foo                                       # Rule to migrate "foo(a,b)" to "int *new_ptr=bar(*b)"
+  Kind: API
+  Priority: Takeover
+  In: foo                                              # Target function name in the input source code
+  Out: $type_name_of($2) *new_ptr = bar($deref($1))    # Format of the migrated result in the output source code
+  Includes: ["<header3>"]
+- Rule: rule_cmath                                     # Rule to migrate "include<cmath>" to "#include<mymath>"
+  Kind: Header
+  Priority: Takeover
+  In: cmath
+  Out: mymath
+  Prefix: "#ifdef USE_MYMATH\n"                        # Add prefix before "#include<mymath>"
+  Postfix: "#endif\n"                                  # Add postfix after "#include<mymath>"
+  Includes: [""]
+- Rule: rule_classA                                    # Rule to migrate "classA" to "classB"
+  Kind: Class
+  Priority: Takeover
+  In: classA
+  Out: classB
+  Includes: []
+  Fields:                                              # Specify the migration rule of fields of classA
+    - In: fieldA                                       # Migrate classA.fieldA to getter and setter
+      OutGetter: get_a                                 # Migrate value reference of classA.fieldA to classB.get_a()
+      OutSetter: set_a                                 # Migrate value assignment of classA.fieldA to classB.set_a()
+    - In: fieldC
+      Out: fieldD                                      # Migrate classA.fieldC to classB.fieldD
+  Methods:
+    - In: methodA
+      Out: a.methodB($2)                               # Migrate classA.methodA(x,y) to a.methodB(y)
+- Rule: rule_Fruit                                     # Rule to migrate "Fruit:apple" to "Fruit:pineapple"
+  Kind: Enum
+  Priority: Takeover
+  EnumName: Fruit
+  In: apple
+  Out: pineapple
+  Includes: ["fruit.h"]
+- Rule: type_rule                                      # Migrate "OldType" to "NewType"
+  Kind: Type
+  Priority: Takeover
+  In: OldType
+  Out: NewType
+  Includes: []
+
+...                                                    # [YAML syntax] End the document
