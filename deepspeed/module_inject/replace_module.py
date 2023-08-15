@@ -279,6 +279,12 @@ def generic_injection(module, fp16=False, bf16=False, enable_cuda_graph=True):
 container_g = None
 
 
+def is_load_module(mod: nn.Module):
+    load_layers = [nn.Linear, nn.Embedding, nn.LayerNorm]
+    load_layer_names = ["LPLayerNorm", "SharedEmbedding", "OPTLearnedPositionalEmbedding", "LlamaRMSNorm"]
+    return mod.__class__ in load_layers or mod._get_name() in load_layer_names
+
+
 def replace_transformer_layer(orig_layer_impl, model, checkpoint_dict, config, model_config):
     """ Replace bert-style transformer layers with DeepSpeed's transformer layer
     Arguments:
@@ -490,8 +496,7 @@ def replace_transformer_layer(orig_layer_impl, model, checkpoint_dict, config, m
                 else:
                     class_name = prev_class_name + '.' + prev_name
                 checking_key = prefix + '.' + class_name + '.' + name + '.' if class_name != "" else prefix + '.' + name + '.'
-                if (child.__class__ in [nn.Linear, nn.Embedding, nn.LayerNorm]
-                        or child._get_name() in ["LPLayerNorm", "SharedEmbedding"]) and state_dict is not None:
+                if is_load_module(child) and state_dict is not None:
                     if any(checking_key in item for item in state_dict):
                         load(child, state_dict, checking_key, mp_group)
                     else:
@@ -845,12 +850,6 @@ def _replace_module(model, policies, prefix='', layer_id=0, level_id=0, state_di
     Returns:
         Modified ``model``.
     """
-    try:
-        import transformers
-        OPTLearnedPositionalEmbedding = transformers.models.opt.modeling_opt.OPTLearnedPositionalEmbedding
-    except:
-        OPTLearnedPositionalEmbedding = None
-    load_layers = [nn.Linear, nn.Embedding, nn.LayerNorm, OPTLearnedPositionalEmbedding]
     for name, child in model.named_children():
         if child.__class__ in policies:
             replaced_module = policies[child.__class__][0](child,
@@ -866,8 +865,7 @@ def _replace_module(model, policies, prefix='', layer_id=0, level_id=0, state_di
             layer_id += 1
         else:
             checking_key = prefix + name + '.'
-            if (child.__class__ in load_layers
-                    or child._get_name() in ["LPLayerNorm", "SharedEmbedding"]) and state_dict is not None:
+            if is_load_module(child) and state_dict is not None:
                 if any(checking_key in item for item in state_dict):
                     load(
                         child,
