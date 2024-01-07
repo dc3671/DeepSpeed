@@ -80,7 +80,13 @@ class InferenceEngineV2:
 
         # Build model from policy
         inference_logger().info("Building model...")
-        self._model = self._policy.build_model(self._config, self._base_mp_group)
+        if get_accelerator().device_name() == "xpu":
+            # TODO: convert V1 Engine to V2 Model
+            from .model_implementations.xpu_model_base import XPUModel
+            self._model = XPUModel(self._config, self._policy, self._base_mp_group)
+            self._model.build_model()
+        else:
+            self._model = self._policy.build_model(self._config, self._base_mp_group)
         inference_logger().info("Model built.")
 
         # Create state manager
