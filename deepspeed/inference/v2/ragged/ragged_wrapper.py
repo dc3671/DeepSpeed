@@ -87,20 +87,21 @@ class RaggedBatchWrapper:
         self._config = config
         self._input_ids = torch.zeros((self._config.max_ragged_batch_size),
                                       dtype=torch.int64,
-                                      device=get_accelerator().current_device())
+                                      device=get_accelerator().current_device_name())
 
-        self._batch_metadata_storage = torch.zeros(2, dtype=torch.int32, device=get_accelerator().current_device())
+        self._batch_metadata_storage = torch.zeros(2, dtype=torch.int32, device=get_accelerator().current_device_name())
 
         self._token_to_seq_storage = torch.zeros((self._config.max_ragged_batch_size),
                                                  dtype=torch.int32,
-                                                 device=get_accelerator().current_device())
+                                                 device=get_accelerator().current_device_name())
         self._inflight_seq_descriptors = torch.zeros((self._config.max_ragged_sequence_count, 4),
                                                      dtype=torch.int32,
-                                                     device=get_accelerator().current_device())
+                                                     device=get_accelerator().current_device_name())
         self._kv_ptrs = torch.zeros((self._config.max_ragged_sequence_count),
                                     dtype=torch.int64,
-                                    device=get_accelerator().current_device())
+                                    device=get_accelerator().current_device_name())
 
+        # TODO: implemente RaggedUtilsBuilder and kernels for xpu
         self._utils_module = RaggedUtilsBuilder().load()
         host_alloc = self._utils_module.allocate_fast_host_buffer
 
