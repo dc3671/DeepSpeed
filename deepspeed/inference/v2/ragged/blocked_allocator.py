@@ -43,7 +43,7 @@ class BlockedAllocator:
             raise ValueError(f'Blocked KV-cache must have at least 1 block, provided {num_blocks}')
 
         self._num_blocks = num_blocks
-        self._blocks = torch.arange(1, num_blocks + 1, dtype=torch.int32, device='cpu', pin_memory=True)
+        self._blocks = torch.arange(1, num_blocks + 1, dtype=torch.int32, device='cpu', pin_memory=False)
         self._head = 0
         self._free_blocks = num_blocks
 

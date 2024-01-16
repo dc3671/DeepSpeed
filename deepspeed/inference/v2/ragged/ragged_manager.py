@@ -82,7 +82,8 @@ class DSStateManager:
                 cache_config.max_blocks_per_allocation_group,
             )
 
-            all_block_ids.append(torch.zeros(ids_shape, dtype=torch.int32, device=get_accelerator().current_device()))
+            all_block_ids.append(
+                torch.zeros(ids_shape, dtype=torch.int32, device=get_accelerator().current_device_name()))
             all_block_ids_shadow.append(self._ragged_utils.allocate_fast_host_buffer(all_block_ids[-1]))
 
         self._all_block_ids = tuple(all_block_ids)

@@ -91,7 +91,7 @@ class BlockedKVCache:
 
             # Perform a dummy nccl call before calculating available memory, on some systems (H100) we've observed higher memory allocations from NCCL
             if dist.get_world_size(group=mp_group) > 1:
-                dummy_tensor = torch.tensor(0, dtype=torch.int32, device=get_accelerator().current_device())
+                dummy_tensor = torch.tensor(0, dtype=torch.int32, device=get_accelerator().current_device_name())
                 dist.all_reduce(dummy_tensor, op=ReduceOp.MIN, group=mp_group)
 
             get_accelerator().empty_cache()
@@ -112,7 +112,9 @@ class BlockedKVCache:
             # In a multi-process setting, we need to ensure that all processes have the same
             # KV cache capacity to ensure scheduling guarantees are equivalent on all ranks.
             if dist.get_world_size(group=mp_group) > 1:
-                reduce_tensor = torch.tensor(num_blocks, dtype=torch.int32, device=get_accelerator().current_device())
+                reduce_tensor = torch.tensor(num_blocks,
+                                             dtype=torch.int32,
+                                             device=get_accelerator().current_device_name())
                 dist.all_reduce(reduce_tensor, op=ReduceOp.MIN, group=mp_group)
                 num_blocks = reduce_tensor.item()
 
@@ -134,8 +136,8 @@ class BlockedKVCache:
             alloc_shape = (num_caches, num_blocks, config.block_size, 2, num_heads, head_size)
             inference_logger().info(
                 f"Allocating KV-cache {cache_group_id} with shape: {alloc_shape} consisting of {num_blocks} blocks.")
-            caches.append(torch.empty(alloc_shape, dtype=config.cache_dtype,
-                                      device=get_accelerator().current_device()))
+            caches.append(
+                torch.empty(alloc_shape, dtype=config.cache_dtype, device=get_accelerator().current_device_name()))
             allocators.append(BlockedAllocator(num_blocks))
 
         self._caches = tuple(caches)
