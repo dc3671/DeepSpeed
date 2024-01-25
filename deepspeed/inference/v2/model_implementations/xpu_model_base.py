@@ -20,12 +20,12 @@ from typing import Optional, Tuple
 import torch
 from huggingface_hub import snapshot_download
 from torch.nn.modules import Module
-from transformers import (AutoModelForCausalLM, AutoTokenizer, T5ForConditionalGeneration)
+from transformers import AutoModelForCausalLM, AutoTokenizer, T5ForConditionalGeneration
 from transformers.utils import is_offline_mode
+from transformers.models.llama import LlamaForCausalLM
 
 from deepspeed import get_accelerator
 
-from ..allocator import empty_from
 from ..inference_utils import ActivationType, DtypeEnum, ceil_div
 from ..modules.configs import (
     NormTypeEnum,
@@ -198,7 +198,7 @@ class XPUModel(DSTransformerModelBase, Module):
         # convert DS::EngineV1 -> nn.Module
         if isinstance(model, deepspeed.InferenceEngine):
             model = model.module
-        self.model = model
+        self.model: LlamaForCausalLM = model
 
     """
     Properties ineherited from `DSInferenceModelBase`
@@ -333,6 +333,19 @@ class XPUModel(DSTransformerModelBase, Module):
     Forward implementations
     """
 
+    def _prepare_position_ids(self, wrapped_batch: RaggedBatchWrapper):
+        """
+        For each sequence in the batch, we store the start token in the batch, the number of tokens,
+        the number of tokens in the history of this sequence, and an unused 4th reserved for alignment.
+        For the above example this would give:
+        [[0, 4, H0, X], [4, 1, H1, X], [5, 3, H2, X]]
+        """
+        position_ids = []
+        for desc in wrapped_batch.inflight_seq_descriptors():
+            # [H0 ~ H0+4], [H1, H1+1], ...
+            position_ids.append(list(range(desc[2], desc[2] + desc[3])))
+        return torch.tensor(position_ids, device=get_accelerator().device_name(), dtype=torch.long)
+
     def _forward_embed(self, ragged_batch: RaggedBatchWrapper) -> torch.Tensor:
         """
         Performs the embedding lookup prior to running the transformer of the model.
@@ -343,87 +356,48 @@ class XPUModel(DSTransformerModelBase, Module):
         Returns:
             torch.Tensor: The embedded batch.
         """
-        embed = self.embed(ragged_batch, self._non_transformer.word_emb)
+        embed = self.model.model.embed_tokens(ragged_batch.input_ids())
 
         if embed.shape[-1] != self.model_dim:
             raise ValueError(f"Embedding output shape {embed.shape} does not match model_dim {self.model_dim}")
 
         return embed
 
-    def _forward_transformer_layer(self, layer_idx: int, residual: torch.Tensor, hidden_states: torch.Tensor,
-                                   ragged_batch_info: RaggedBatchWrapper) -> Tuple[torch.Tensor, torch.Tensor]:
-        """
-        Executes one (slightly offset) layer of the transformer. This implementation does a peak-ahead
-        optimization to fuse the layer norm of the next layer into the current layer.
-
-        Arguments:
-            layer_idx (int): The index of the layer to execute.
-            residual (torch.Tensor): The residual tensor from the previous layer.
-            hidden_states (torch.Tensor): The hidden states from the previous layer. This is the
-                hidden states after pre normalization.
-            ragged_batch_info (RaggedBatchWrapper): The batch metadata.
-        """
-        # TODO(cmikeh2): Distribute ragged_batch_info to all modules
-
-        cur_params = self._transformer[layer_idx]
-        kv_cache = self.state_manager.get_cache(layer_idx)
-
-        hidden_states = self.qkv(hidden_states, cur_params.qkv_w, b=None)
-        hidden_states = self.attn(hidden_states, kv_cache, ragged_batch_info)
-        hidden_states = self.attn_out(hidden_states, cur_params.attn_out_w, b=None)
-
-        if self.tp_size > 1:
-            dist.all_reduce(hidden_states, group=self._base_mp_group)
-
-        residual, hidden_states = self.norm(residual, hidden_states, cur_params.mlp_norm_gamma, beta=None)
-
-        # Should be configurable in the future
-        hidden_states = self.mlp_1(hidden_states, cur_params.mlp_1_w, b=None)
-        hidden_states = self.mlp_2(hidden_states, cur_params.mlp_2_w, b=None)
-
-        if self.tp_size > 1:
-            dist.all_reduce(hidden_states, group=self._base_mp_group)
-
-        if layer_idx != self.num_layers - 1:
-            next_params = self._transformer[layer_idx + 1]
-            residual, hidden_states = self.norm(residual, hidden_states, next_params.attn_norm_gamma, beta=None)
-        else:
-            # On last layer, we just need to perform the residual add. Adding into the residual
-            # here is safe.
-            residual.add_(hidden_states)
-
-        return residual, hidden_states
-
     def _forward_unembed(self, hidden_states: torch.Tensor, ragged_batch_info: RaggedBatchWrapper) -> torch.Tensor:
         """
         Performs unembedding of the hidden states to logits. This will only sample the final
         token of each sequence.
         """
-        logits = self.unembed(hidden_states,
-                              self._non_transformer.word_unembed,
-                              ragged_batch_info,
-                              gamma=self._non_transformer.final_norm)
-
-        if self.tp_size > 1:
-            comm_buffer = empty_from(self._comm_logits, (self.tp_size, logits.shape[0], logits.shape[1]))
-            full_logits = empty_from(self._return_logits, (logits.shape[0], self.vocab_size))
-
-            dist.all_gather_into_tensor(comm_buffer, logits, group=self._base_mp_group)
-
-            full_logits.copy_(comm_buffer.permute(1, 0, 2).reshape(logits.shape[0], self.vocab_size))
-
-            return full_logits
-        else:
-            return logits
+        return self.model.lm_head(hidden_states)
 
     def forward(self, wrapped_batch: RaggedBatchWrapper) -> torch.Tensor:
+        #model_kwargs = {}
+        #model_inputs = self.model.prepare_inputs_for_generation(wrapped_batch.input_ids(), **model_kwargs)
+        #model_outputs = self.model(**model_inputs)
+        input_ids = wrapped_batch.input_ids()
+        position_ids = self._prepare_position_ids(wrapped_batch)
+        hidden_states = self.model.model.embed_tokens(input_ids)
 
-        residual = self._forward_embed(wrapped_batch)
+        #all_hidden_states = () if output_hidden_states else None
+        #all_self_attns = () if output_attentions else None
+        next_decoder_cache = ()
+        for idx, decoder_layer in enumerate(self.model.model.layers):
+            # actual(maybe): (num_blocks, config.block_size, 2, num_heads, head_size)
+            # expect: [2, num_blocks, num_heads, head_size, block_size]
+            kv_cache = self.state_manager.get_cache(idx)
+            layer_outputs = decoder_layer(
+                hidden_states,
+                position_ids=position_ids,
+                kv_cache=kv_cache,
+                block_tables=None,  # TODO: [num_seqs, max_blocks_per_seq]
+                slot_maps=None,  # [num_tokens] per kv token -> block_idx
+                input_length=None,  # TODO
+                max_seqlen=None,  # TODO
+                prompt_lens=None,  # TODO
+                use_cache=True,
+            )
+            hidden_states = layer_outputs[0]
+            next_decoder_cache += (layer_outputs[1], )
 
-        residual, hidden_states = self.norm(residual, None, self._transformer[0].attn_norm_gamma, beta=None)
-
-        for layer_idx in range(self.num_layers):
-            residual, hidden_states = self._forward_transformer_layer(layer_idx, residual, hidden_states,
-                                                                      wrapped_batch)
-
-        return self._forward_unembed(residual, wrapped_batch)
+        hidden_states = self.model.model.norm(hidden_states)
+        return self.model.lm_head(hidden_states)
