@@ -11,6 +11,11 @@ from deepspeed.ops.op_builder import InferenceCutlassBuilder
 
 from typing import Optional
 
+PYTORCH_ACT_FN_MAP = {
+    ActivationType.GELU: torch.nn.functional.gelu,
+    ActivationType.SILU: torch.nn.functional.silu,
+    ActivationType.RELU: torch.nn.functional.relu
+}
 
 class MoEGEMM(DSKernelBase):
     """
@@ -33,9 +38,28 @@ class MoEGEMM(DSKernelBase):
             raise ValueError("Unsupported activation function: {}, supported_act_fns are {}".format(
                 act_fn, MoEGEMM.supported_act_fns))
 
-        inf_module = InferenceCutlassBuilder().load()
-        self.kernel = inf_module.moe_gemm
+        # inf_module = InferenceCutlassBuilder().load()
+        # self.kernel = inf_module.moe_gemm
         self.act_fn = act_fn
+        
+    def ref_moegemm(self,
+                 ordered_output: torch.Tensor,
+                 ordered_input: torch.Tensor,
+                 weights: torch.Tensor,
+                 cumsum_rows: torch.Tensor,
+                 biases: Optional[torch.Tensor] = None) -> None:
+        n_experts = weights.shape[0]
+        for expert_idx in range(n_experts):
+            start = cumsum_rows[expert_idx - 1] if expert_idx > 0 else 0
+            end = cumsum_rows[expert_idx]
+            activations_slice = activations[start:end]
+            weights_slice = weights[expert_idx]
+            biases_slice = biases[expert_idx]
+            ordered_output[start:end] = torch.matmul(activations_slice, weights_slice) + biases_slice
+
+        if act_fn != ActivationType.IDENTITY:
+            act_fn_fn = PYTORCH_ACT_FN_MAP[self.act_fn]
+            ordered_output = act_fn_fn(ordered_output)        
 
     def __call__(self,
                  ordered_output: torch.Tensor,
@@ -44,7 +68,8 @@ class MoEGEMM(DSKernelBase):
                  total_rows_before_expert: torch.Tensor,
                  biases: Optional[torch.Tensor] = None) -> None:
         """
-            Performs a MoE GEMM. Note that the stride between token inputs must be even (the distance between byte 1 of token 0 and token 1 must be the same as the distance between byte 1 of token 1 and token 2).
+            Performs a MoE GEMM. Note that the stride between token inputs 
+            must be even (the distance between byte 1 of token 0 and token 1 must be the same as the distance between byte 1 of token 1 and token 2).
 
             Arguments:
                 ordered_output (torch.Tensor): The output of the MoE GEMM of shape [n_tokens, out_neurons].
@@ -56,5 +81,6 @@ class MoEGEMM(DSKernelBase):
             Returns:
                 ordered_output
             """
-        self.kernel(ordered_output, ordered_input, weights, biases, total_rows_before_expert, self.act_fn)
+        # self.kernel(ordered_output, ordered_input, weights, biases, total_rows_before_expert, self.act_fn)
+        self.ref_moegemm(ordered_output, ordered_input, weights, total_rows_before_expert, biases)
         return ordered_output
