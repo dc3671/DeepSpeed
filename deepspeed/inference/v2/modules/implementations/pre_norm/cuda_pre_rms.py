@@ -46,10 +46,10 @@ class DSPreRMSCUDAModule(DSPreNormBase):
         # Buffers for both the hidden and residual outputs
         self._hidden_output = torch.empty((config.max_tokens, config.channels),
                                           dtype=config.output_dtype,
-                                          device=get_accelerator().current_device())
+                                          device=get_accelerator().current_device_name())
         self._residual_output = torch.empty((config.max_tokens, config.channels),
                                             dtype=config.output_dtype,
-                                            device=get_accelerator().current_device())
+                                            device=get_accelerator().current_device_name())
 
     def transform_param(self, param: torch.Tensor) -> InferenceParameter:
         param = param.to(self._config.input_dtype)

@@ -39,7 +39,7 @@ class DSPostLNCUDAModule(DSPostNormBase):
 
         self._output = torch.empty((config.max_tokens, config.channels),
                                    dtype=config.output_dtype,
-                                   device=get_accelerator().current_device())
+                                   device=get_accelerator().current_device_name())
 
     def transform_param(self, param: torch.Tensor) -> InferenceParameter:
         param = param.to(self._config.input_dtype)

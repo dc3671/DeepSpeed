@@ -79,49 +79,49 @@ class DSMultiGemmMoE(DSMoEBase):
         # Gating buffers
         self._logits = torch.empty((self._config.max_tokens, self.n_experts),
                                    dtype=self._config.input_dtype,
-                                   device=get_accelerator().current_device())
+                                   device=get_accelerator().current_device_name())
         self._expert_counts = torch.empty((self.n_experts, ),
                                           dtype=torch.int32,
-                                          device=get_accelerator().current_device())
+                                          device=get_accelerator().current_device_name())
         self._scores = torch.empty((self._config.max_tokens, self.n_top_k),
                                    dtype=torch.float32,
-                                   device=get_accelerator().current_device())
+                                   device=get_accelerator().current_device_name())
         self._assignments = torch.empty((self._config.max_tokens, self.n_top_k),
                                         dtype=torch.int32,
-                                        device=get_accelerator().current_device())
+                                        device=get_accelerator().current_device_name())
         self._offsets = torch.empty((self._config.max_tokens, self.n_top_k),
                                     dtype=torch.int32,
-                                    device=get_accelerator().current_device())
+                                    device=get_accelerator().current_device_name())
 
         # Scatter buffers
         self._moe_input = torch.empty((self._config.max_tokens * self.n_top_k, self._config.model_dim),
                                       dtype=self._config.input_dtype,
-                                      device=get_accelerator().current_device())
+                                      device=get_accelerator().current_device_name())
         self._expert_cumsum = torch.empty((self._config.n_experts, ),
                                           dtype=torch.int64,
-                                          device=get_accelerator().current_device())
+                                          device=get_accelerator().current_device_name())
         self._mapped_slots = torch.empty((self._config.max_tokens, self.n_top_k),
                                          dtype=torch.int32,
-                                         device=get_accelerator().current_device())
+                                         device=get_accelerator().current_device_name())
 
         # GEMM Buffers
         self._intermediate = torch.empty((self._config.max_tokens * self.n_top_k, self._config.intermediate_features),
                                          dtype=self._config.output_dtype,
-                                         device=get_accelerator().current_device())
+                                         device=get_accelerator().current_device_name())
         if self._activation is not None:
             self._gated_intermediate = torch.empty(
                 (self._config.max_tokens * self.n_top_k, self._config.intermediate_features * 2),
                 dtype=self._config.output_dtype,
-                device=get_accelerator().current_device())
+                device=get_accelerator().current_device_name())
 
         self._output_unordered = torch.empty((self._config.max_tokens * self.n_top_k, self._config.model_dim),
                                              dtype=self._config.output_dtype,
-                                             device=get_accelerator().current_device())
+                                             device=get_accelerator().current_device_name())
 
         # Gather buffer
         self._output = torch.empty((self._config.max_tokens, self._config.model_dim),
                                    dtype=self._config.output_dtype,
-                                   device=get_accelerator().current_device())
+                                   device=get_accelerator().current_device_name())
 
     def transform_gate_param(self, param: torch.Tensor) -> InferenceParameter:
         """

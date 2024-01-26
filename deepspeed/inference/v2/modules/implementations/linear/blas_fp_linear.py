@@ -62,14 +62,14 @@ class BlasFPLinear(DSLinearBase):
             self._act_fn = CUDAGatedActivation(config.out_channels, config.output_dtype, config.activation)
             self._double_buffer = torch.empty((config.max_tokens, config.out_channels * 2),
                                               dtype=config.output_dtype,
-                                              device=get_accelerator().current_device())
+                                              device=get_accelerator().current_device_name())
         else:
             self._is_gated = False
             self._act_fn = CUDABiasActivation(config.out_channels, config.output_dtype, config.activation)
 
         self._output = torch.empty((config.max_tokens, config.out_channels),
                                    dtype=config.output_dtype,
-                                   device=get_accelerator().current_device())
+                                   device=get_accelerator().current_device_name())
 
     def transform_param(self, param: torch.Tensor) -> InferenceParameter:
         """

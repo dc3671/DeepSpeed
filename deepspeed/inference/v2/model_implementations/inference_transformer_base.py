@@ -268,11 +268,11 @@ class DSTransformerModelBase(DSInferenceModelBase):
             self._comm_logits = torch.empty(self.tp_size,
                                             self._engine_config.state_manager.max_ragged_sequence_count,
                                             unembed_dim,
-                                            device=get_accelerator().current_device(),
+                                            device=get_accelerator().current_device_name(),
                                             dtype=self.activation_dtype.value)
             self._return_logits = torch.empty(self._engine_config.state_manager.max_ragged_sequence_count,
                                               self.vocab_size,
-                                              device=get_accelerator().current_device(),
+                                              device=get_accelerator().current_device_name(),
                                               dtype=self.activation_dtype.value)
 
     def transform_unembed_param(self, param: torch.Tensor) -> InferenceParameter:

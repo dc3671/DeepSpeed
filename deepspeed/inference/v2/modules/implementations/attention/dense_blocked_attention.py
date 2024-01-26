@@ -110,11 +110,11 @@ class DSDenseBlockedAttention(DSSelfAttentionBase):
         self.model_dim = self._config.head_size * self._config.n_heads_q
         self._output = torch.empty((self._config.max_tokens, self._config.head_size * self._config.n_heads_q),
                                    dtype=self._config.output_dtype,
-                                   device=get_accelerator().current_device())
+                                   device=get_accelerator().current_device_name())
 
         # TODO(cmikeh2): Pre-allocate storage buffer for the attention atoms.
         self._max_atoms = self._config.max_sequences
-        self._atoms = torch.empty((self._max_atoms, 8), dtype=torch.int32, device=get_accelerator().current_device())
+        self._atoms = torch.empty((self._max_atoms, 8), dtype=torch.int32, device=get_accelerator().current_device_name())
 
         alloc_func = RaggedUtilsBuilder().load().allocate_fast_host_buffer
         self._atoms_shadow = alloc_func(self._atoms)

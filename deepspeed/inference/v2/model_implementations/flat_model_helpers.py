@@ -178,7 +178,7 @@ def flatten_inference_model(
     l_name = "non_transformer"
     total_size = process_layer(non_transformer_container, l_name, total_size)
 
-    buffer = torch.empty(total_size, dtype=torch.uint8, device=get_accelerator().current_device())
+    buffer = torch.empty(total_size, dtype=torch.uint8, device=get_accelerator().current_device_name())
 
     def copy_layer(layer_container: LayerContainer, l_name: str) -> None:
         """

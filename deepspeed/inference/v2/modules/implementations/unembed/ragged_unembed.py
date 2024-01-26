@@ -70,11 +70,11 @@ class DSRaggedUnembed(DSUnembedBase):
 
         self._intermediate = torch.empty((self._config.max_sequences, self._config.model_dim),
                                          dtype=self._config.dtype,
-                                         device=get_accelerator().current_device())
+                                         device=get_accelerator().current_device_name())
 
         self._output = torch.empty((self._config.max_sequences, self._config.vocab_size),
                                    dtype=self._config.dtype,
-                                   device=get_accelerator().current_device())
+                                   device=get_accelerator().current_device_name())
 
     @property
     def output(self) -> torch.Tensor:

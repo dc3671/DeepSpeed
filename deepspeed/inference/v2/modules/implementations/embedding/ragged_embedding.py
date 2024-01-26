@@ -53,7 +53,7 @@ class DSRaggedEmbedding(DSEmbeddingBase):
 
         self._output = torch.empty((self._config.max_tokens, self._config.embedding_dim),
                                    dtype=self._config.residual_dtype,
-                                   device=get_accelerator().current_device())
+                                   device=get_accelerator().current_device_name())
 
     @property
     def output(self) -> torch.Tensor:
