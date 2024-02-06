@@ -44,20 +44,33 @@ class MoEGEMM(DSKernelBase):
         
     def ref_moegemm(self,
                  ordered_output: torch.Tensor,
-                 ordered_input: torch.Tensor,
+                 activations: torch.Tensor,
                  weights: torch.Tensor,
                  cumsum_rows: torch.Tensor,
                  biases: Optional[torch.Tensor] = None) -> None:
+        """
+        Arguments:
+            ordered_output (torch.Tensor): The output of the MoE GEMM of shape [n_tokens, out_neurons].
+            ordered_input (torch.Tensor): The direct input for the MoE GEMM of shape [n_tokens, in_neurons].
+            weights (torch.Tensor): The weights of shape [n_experts, in_neurons, out_neurons]. These weights must be contiguous.
+            total_rows_before_expert (torch.Tensor): The total number of rows before each expert of shape [n_experts].
+            biases (torch.Tensor): The biases of shape [n_experts, out_neurons]. These biases must be contiguous.
+
+        Returns:
+            ordered_output
+        """                 
         n_experts = weights.shape[0]
         for expert_idx in range(n_experts):
             start = cumsum_rows[expert_idx - 1] if expert_idx > 0 else 0
             end = cumsum_rows[expert_idx]
             activations_slice = activations[start:end]
             weights_slice = weights[expert_idx]
-            biases_slice = biases[expert_idx]
-            ordered_output[start:end] = torch.matmul(activations_slice, weights_slice) + biases_slice
+            output = torch.matmul(activations_slice, weights_slice)
+            if biases is not None:
+                output += biases[expert_idx]
+            ordered_output[start:end] = output
 
-        if act_fn != ActivationType.IDENTITY:
+        if self.act_fn != ActivationType.IDENTITY:
             act_fn_fn = PYTORCH_ACT_FN_MAP[self.act_fn]
             ordered_output = act_fn_fn(ordered_output)        
 

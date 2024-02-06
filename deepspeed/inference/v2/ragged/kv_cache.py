@@ -95,13 +95,13 @@ class BlockedKVCache:
                 dist.all_reduce(dummy_tensor, op=ReduceOp.MIN, group=mp_group)
 
             get_accelerator().empty_cache()
-            available_kv_memory = get_accelerator().available_memory() - self._memory_config.size
+            available_kv_memory = get_accelerator().available_memory() * 0.9 - self._memory_config.size
             total_memory = get_accelerator().total_memory()
 
             inference_logger().debug(
                 f"Memory usage before KV-cache allocation: total_memory={total_memory}, available_kv_memory={available_kv_memory}, total_per_block_footprint={total_per_block_footprint}"
             )
-
+            print(f"------->available_kv_memory: {available_kv_memory}, total_per_block_footprint: {total_per_block_footprint}")
             if available_kv_memory < total_per_block_footprint:
                 raise ValueError(
                     f"Insufficient memory to allocate KV-caches. Required: {total_per_block_footprint}, Available: {available_kv_memory}"
@@ -122,7 +122,8 @@ class BlockedKVCache:
                 get_accelerator().empty_cache()
         else:  # AllocationMode.ALLOCATE
             num_blocks = self._memory_config.size
-
+        
+        num_blocks = int(num_blocks)
         caches = []
         allocators = []
 

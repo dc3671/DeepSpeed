@@ -4,3 +4,4 @@
 # DeepSpeed Team
 
 from .dense_blocked_attention import DSDenseBlockedAttention
+from .common import attention_ref

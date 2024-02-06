@@ -16,47 +16,49 @@ def get_q_block_size(head_size: int) -> int:
     """
     Returns the query block size required by the kernel given a head size.
     """
-    cc_major, cc_minor = torch.cuda.get_device_capability(get_accelerator().current_device())  #ignore-cuda
+    return 64
+    # cc_major, cc_minor = torch.cuda.get_device_capability(get_accelerator().current_device())  #ignore-cuda
 
-    if cc_major < 8:
-        raise RuntimeError("Blocked attention requires CUDA compute capability >= 8.0")
+    # if cc_major < 8:
+    #     raise RuntimeError("Blocked attention requires CUDA compute capability >= 8.0")
 
-    if head_size <= 64:
-        return 128
-    elif head_size <= 160:
-        if cc_minor != 0:
-            return 64
-        else:
-            return 128
-    elif head_size == 192:
-        return 128
-    elif head_size == 224:
-        if cc_minor != 0:
-            return 64
-        else:
-            return 128
-    else:
-        if cc_major == 8 and cc_minor == 0:
-            return 128
-        else:
-            return 64
+    # if head_size <= 64:
+    #     return 128
+    # elif head_size <= 160:
+    #     if cc_minor != 0:
+    #         return 64
+    #     else:
+    #         return 128
+    # elif head_size == 192:
+    #     return 128
+    # elif head_size == 224:
+    #     if cc_minor != 0:
+    #         return 64
+    #     else:
+    #         return 128
+    # else:
+    #     if cc_major == 8 and cc_minor == 0:
+    #         return 128
+    #     else:
+    #         return 64
 
 
 def get_kv_block_size(head_size: int) -> int:
     """
     Return preferred granulatity for blocked KV-cache implementation.
     """
-    cc_major, cc_minor = torch.cuda.get_device_capability(get_accelerator().current_device())  #ignore-cuda
+    return 64
+    # cc_major, cc_minor = torch.cuda.get_device_capability(get_accelerator().current_device())  #ignore-cuda
 
-    if cc_major < 8:
-        raise RuntimeError("Blocked attention requires CUDA compute capability >= 8.0")
+    # if cc_major < 8:
+    #     raise RuntimeError("Blocked attention requires CUDA compute capability >= 8.0")
 
-    if head_size <= 64:
-        return 128
-    elif head_size != 160 or cc_minor != 0:
-        return 64
-    else:
-        return 32
+    # if head_size <= 64:
+    #     return 128
+    # elif head_size != 160 or cc_minor != 0:
+    #     return 64
+    # else:
+    #     return 32
 
 
 class BlockedFlashAttn(DSKernelBase):
