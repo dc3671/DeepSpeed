@@ -21,7 +21,10 @@ class HuggingFaceCheckpointEngine(CheckpointEngineBase):
 
         self.model_name_or_path = model_name_or_path
         self.auth_token = auth_token
-        self.model_config = AutoConfig.from_pretrained(self.model_name_or_path)
+        if "mixtral" in self.model_name_or_path.lower():
+            self.model_config = AutoConfig.from_pretrained(self.model_name_or_path, torch_dtype=torch.float16)            
+        else:
+            self.model_config = AutoConfig.from_pretrained(self.model_name_or_path)
         # Define this property here so we can use it in the model implementation
         if not hasattr(self.model_config, "max_seq_length"):
             if hasattr(self.model_config, "max_position_embeddings"):
