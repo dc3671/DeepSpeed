@@ -70,6 +70,7 @@ class RaggedBatchWrapper:
     # Holds the block ids for each sequence in the ragged batch.
     _kv_ptrs: torch.Tensor
     _kv_ptrs_shadow: torch.Tensor
+    _kv_shadow: list
     """
     List of ptrs pointing to the GPU buffer that holds the KV-block ids for each sequence.
     If there are multiple allocation groups associated with each of the sequences, then
@@ -109,6 +110,7 @@ class RaggedBatchWrapper:
         self._token_to_seq_storage_shadow = host_alloc(self._token_to_seq_storage)
         self._inflight_seq_descriptors_shadow = host_alloc(self._inflight_seq_descriptors)
         self._kv_ptrs_shadow = host_alloc(self._kv_ptrs)
+        self._kv_shadow = [None] * self._config.max_ragged_sequence_count
 
         # Default behavior should be no padding
         self._is_padded = False
@@ -118,6 +120,7 @@ class RaggedBatchWrapper:
         self._batch_tokens = []
         self._inflight_seq_descriptors_shadow_buf = []
         self._kv_blocks_ptr_buf = []
+        self._kv_blocks_buf = []
         self._token_to_seq_storage_shadow_buf = []
 
     def clear(self) -> None:
@@ -129,6 +132,7 @@ class RaggedBatchWrapper:
         self._batch_tokens = []
         self._inflight_seq_descriptors_shadow_buf = []
         self._kv_blocks_ptr_buf = []
+        self._kv_blocks_buf = []
         self._token_to_seq_storage_shadow_buf = []
 
     def insert_sequence(self, seq_descriptor: DSSequenceDescriptor, tokens: torch.Tensor, do_checks=True) -> None:
@@ -165,6 +169,7 @@ class RaggedBatchWrapper:
         self._token_to_seq_storage_shadow_buf.extend([self.current_sequences] * seq_tokens)
 
         self._kv_blocks_ptr_buf.append(seq_descriptor.kv_blocks_ptr)
+        self._kv_blocks_buf.append(seq_descriptor.kv_blocks)
 
         self._current_tokens += seq_tokens
         self._current_sequences += 1
@@ -194,6 +199,7 @@ class RaggedBatchWrapper:
         self._token_to_seq_storage_shadow[:len(self._token_to_seq_storage_shadow_buf)].copy_(
             torch.tensor(self._token_to_seq_storage_shadow_buf))
         self._kv_ptrs_shadow[:len(self._kv_blocks_ptr_buf)].copy_(torch.tensor(self._kv_blocks_ptr_buf))
+        self._kv_shadow[:len(self._kv_blocks_buf)] = self._kv_blocks_buf
         self._batch_metadata_storage_shadow.copy_(torch.tensor([cur_toks, self.current_sequences]))
 
         if padding:
@@ -266,6 +272,10 @@ class RaggedBatchWrapper:
             return self._kv_ptrs[:self.current_sequences]
         else:
             return self._kv_ptrs_shadow
+
+    # TODO: this is a workaround for blockattn
+    def kv_buffer(self) -> list:
+        return self._kv_shadow            
 
     def masks(self, on_device: bool = True) -> Optional[torch.Tensor]:
         """
