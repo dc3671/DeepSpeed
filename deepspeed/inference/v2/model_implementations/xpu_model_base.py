@@ -375,7 +375,10 @@ class XPUModel(DSTransformerModelBase, Module):
         #model_inputs = self.model.prepare_inputs_for_generation(wrapped_batch.input_ids(), **model_kwargs)
         #model_outputs = self.model(**model_inputs)
         input_ids = wrapped_batch.input_ids()
-        position_ids = self._prepare_position_ids(wrapped_batch)
+        batch_data = wrapped_batch.batch_metadata_buffer(False)
+        seq_data = wrapped_batch.inflight_seq_descriptors(False)
+        kv_buffer = wrapped_batch.kv_buffer()
+        #position_ids = self._prepare_position_ids(wrapped_batch)
         hidden_states = self.model.model.embed_tokens(input_ids)
 
         #all_hidden_states = () if output_hidden_states else None
@@ -387,13 +390,16 @@ class XPUModel(DSTransformerModelBase, Module):
             kv_cache = self.state_manager.get_cache(idx)
             layer_outputs = decoder_layer(
                 hidden_states,
-                position_ids=position_ids,
+                #position_ids=position_ids,
                 kv_cache=kv_cache,
-                block_tables=None,  # TODO: [num_seqs, max_blocks_per_seq]
-                slot_maps=None,  # [num_tokens] per kv token -> block_idx
-                input_length=None,  # TODO
-                max_seqlen=None,  # TODO
-                prompt_lens=None,  # TODO
+                #block_tables=None,  # TODO: [num_seqs, max_blocks_per_seq]
+                #slot_maps=None,  # [num_tokens] per kv token -> block_idx
+                #input_length=None,  # TODO
+                #max_seqlen=None,  # TODO
+                #prompt_lens=None,  # TODO
+                batch_data=batch_data,
+                seq_data=seq_data,
+                kv_buffer=kv_buffer,
                 use_cache=True,
             )
             hidden_states = layer_outputs[0]
