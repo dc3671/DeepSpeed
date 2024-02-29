@@ -326,6 +326,9 @@ class XPUModel(DSTransformerModelBase, Module):
             )
         return (self._kv_cache_config, )
 
+    def get_remaining_block_capacity(self, sequence: DSSequenceDescriptor) -> int:
+        return sequence.seen_tokens % self.kv_block_size
+
     def prepare_batch(self, wrapped_batch: RaggedBatchWrapper) -> None:
         pass
 
@@ -381,14 +384,11 @@ class XPUModel(DSTransformerModelBase, Module):
         #position_ids = self._prepare_position_ids(wrapped_batch)
         hidden_states = self.model.model.embed_tokens(input_ids)
 
-        #all_hidden_states = () if output_hidden_states else None
-        #all_self_attns = () if output_attentions else None
-        next_decoder_cache = ()
         for idx, decoder_layer in enumerate(self.model.model.layers):
             # actual(maybe): (num_blocks, config.block_size, 2, num_heads, head_size)
             # expect: [2, num_blocks, num_heads, head_size, block_size]
             kv_cache = self.state_manager.get_cache(idx)
-            layer_outputs = decoder_layer(
+            hidden_states = decoder_layer(
                 hidden_states,
                 #position_ids=position_ids,
                 kv_cache=kv_cache,
@@ -402,8 +402,11 @@ class XPUModel(DSTransformerModelBase, Module):
                 kv_buffer=kv_buffer,
                 use_cache=True,
             )
-            hidden_states = layer_outputs[0]
-            next_decoder_cache += (layer_outputs[1], )
 
         hidden_states = self.model.model.norm(hidden_states)
-        return self.model.lm_head(hidden_states)
+        print(">>> forward current len", wrapped_batch.current_sequences)
+        # TODO: gather token output according to wrapped_batch
+        hidden_states = self.model.lm_head(hidden_states)
+        # [bs*beam, seq, hidden_size] -> [seq, hidden_size]
+        hidden_states = hidden_states.view(-1, hidden_states.shape[-1])
+        return hidden_states
