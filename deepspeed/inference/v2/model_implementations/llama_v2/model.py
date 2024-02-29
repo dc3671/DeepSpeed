@@ -12,6 +12,7 @@ import deepspeed.comm as dist
 from ...allocator import empty_from
 from ...inference_utils import ActivationType, DtypeEnum
 from .. import *
+from ..inference_transformer_base import *
 from ...modules.configs import *
 from ...modules.interfaces import *
 from ...ragged import RaggedBatchWrapper

@@ -9,12 +9,14 @@ from ...config_v2 import RaggedInferenceEngineConfig
 from ..inference_policy_base import ContainerMap, InferenceV2Policy
 from .container import Llama2NonTransformerContainer, Llama2TransformerContainer
 from .model import Llama2InferenceModel
+from .model_xpu import Llama2InferenceXPUModel
 
 
 class Llama2Policy(InferenceV2Policy):
 
     def instantiate_model(self, engine_config: RaggedInferenceEngineConfig, mp_group: Any) -> Llama2InferenceModel:
-        return Llama2InferenceModel(config=self._model_config, engine_config=engine_config, base_mp_group=mp_group)
+        return Llama2InferenceXPUModel(config=self._model_config, engine_config=engine_config, base_mp_group=mp_group)
+        #return Llama2InferenceModel(config=self._model_config, engine_config=engine_config, base_mp_group=mp_group)
 
     def build_container_map(self) -> ContainerMap:
         map = ContainerMap()
