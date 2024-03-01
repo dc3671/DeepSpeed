@@ -381,6 +381,7 @@ class XPUModel(DSTransformerModelBase, Module):
         batch_data = wrapped_batch.batch_metadata_buffer(False)
         seq_data = wrapped_batch.inflight_seq_descriptors(False)
         kv_buffer = wrapped_batch.kv_buffer()
+        cur_seq_len = wrapped_batch.current_sequences
         #position_ids = self._prepare_position_ids(wrapped_batch)
         hidden_states = self.model.model.embed_tokens(input_ids)
 
@@ -404,8 +405,9 @@ class XPUModel(DSTransformerModelBase, Module):
             )
 
         hidden_states = self.model.model.norm(hidden_states)
-        print(">>> forward current len", wrapped_batch.current_sequences)
-        # TODO: gather token output according to wrapped_batch
+        # gather token output according to wrapped_batch
+        seq_ids = [seq_data[i][0].item() + seq_data[i][1].item() - 1 for i in range(cur_seq_len)]
+        hidden_states = hidden_states[:, seq_ids, :].view(cur_seq_len, 1, -1)
         hidden_states = self.model.lm_head(hidden_states)
         # [bs*beam, seq, hidden_size] -> [seq, hidden_size]
         hidden_states = hidden_states.view(-1, hidden_states.shape[-1])
