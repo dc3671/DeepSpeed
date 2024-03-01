@@ -20,18 +20,14 @@ from typing import Optional, Tuple
 import torch
 from huggingface_hub import snapshot_download
 from torch.nn.modules import Module
-from transformers import AutoModelForCausalLM, AutoTokenizer, T5ForConditionalGeneration
-from transformers.utils import is_offline_mode
+from transformers import (AutoModelForCausalLM, AutoTokenizer, T5ForConditionalGeneration)
 from transformers.models.llama import LlamaForCausalLM
+from transformers.utils import is_offline_mode
 
 from deepspeed import get_accelerator
 
 from ..inference_utils import ActivationType, DtypeEnum, ceil_div
-from ..modules.configs import (
-    NormTypeEnum,
-    PositionalEmbeddingType,
-    RotateHalfConfig,
-)
+from ..modules.configs import (NormTypeEnum, PositionalEmbeddingType, RotateHalfConfig)
 from ..ragged import DSSequenceDescriptor, KVCacheConfig, RaggedBatchWrapper
 from .inference_transformer_base import DSTransformerModelBase
 
@@ -336,7 +332,7 @@ class XPUModel(DSTransformerModelBase, Module):
     Forward implementations
     """
 
-    def _prepare_position_ids(self, wrapped_batch: RaggedBatchWrapper):
+    def _prepare_position_ids(self, batch_size: int, seq_data: torch.Tensor):
         """
         For each sequence in the batch, we store the start token in the batch, the number of tokens,
         the number of tokens in the history of this sequence, and an unused 4th reserved for alignment.
@@ -344,10 +340,14 @@ class XPUModel(DSTransformerModelBase, Module):
         [[0, 4, H0, X], [4, 1, H1, X], [5, 3, H2, X]]
         """
         position_ids = []
-        for desc in wrapped_batch.inflight_seq_descriptors():
+        for seq_id in range(batch_size):
             # [H0 ~ H0+4], [H1, H1+1], ...
-            position_ids.append(list(range(desc[2], desc[2] + desc[3])))
-        return torch.tensor(position_ids, device=get_accelerator().device_name(), dtype=torch.long)
+            n_tokens = seq_data[seq_id][1]
+            seen_tokens = seq_data[seq_id][2]
+            position_ids.extend(range(seen_tokens, seen_tokens + n_tokens))
+        position_ids = torch.tensor(position_ids, device=get_accelerator().device_name(),
+                                    dtype=torch.long).view(1, len(position_ids))
+        return position_ids
 
     def _forward_embed(self, ragged_batch: RaggedBatchWrapper) -> torch.Tensor:
         """
@@ -374,15 +374,20 @@ class XPUModel(DSTransformerModelBase, Module):
         return self.model.lm_head(hidden_states)
 
     def forward(self, wrapped_batch: RaggedBatchWrapper) -> torch.Tensor:
-        #model_kwargs = {}
-        #model_inputs = self.model.prepare_inputs_for_generation(wrapped_batch.input_ids(), **model_kwargs)
-        #model_outputs = self.model(**model_inputs)
+        # model_kwargs = {}
+        # model_inputs = self.model.prepare_inputs_for_generation(wrapped_batch.input_ids(), **model_kwargs)
+        # model_outputs = self.model(**model_inputs)
         input_ids = wrapped_batch.input_ids()
         batch_data = wrapped_batch.batch_metadata_buffer(False)
+        # total_tokens = batch_data[0].item()
+        batch_size = batch_data[1].item()
         seq_data = wrapped_batch.inflight_seq_descriptors(False)
         kv_buffer = wrapped_batch.kv_buffer()
         cur_seq_len = wrapped_batch.current_sequences
-        #position_ids = self._prepare_position_ids(wrapped_batch)
+        position_ids = self._prepare_position_ids(batch_size, seq_data)
+        max_seqlen_q = max([seq_data[i][1].item() for i in range(batch_size)])
+        max_seqlen_kv = max([seq_data[i][1].item() + seq_data[i][2].item() for i in range(batch_size)])
+
         hidden_states = self.model.model.embed_tokens(input_ids)
 
         for idx, decoder_layer in enumerate(self.model.model.layers):
@@ -391,13 +396,13 @@ class XPUModel(DSTransformerModelBase, Module):
             kv_cache = self.state_manager.get_cache(idx)
             hidden_states = decoder_layer(
                 hidden_states,
-                #position_ids=position_ids,
+                position_ids=position_ids,
                 kv_cache=kv_cache,
-                #block_tables=None,  # TODO: [num_seqs, max_blocks_per_seq]
-                #slot_maps=None,  # [num_tokens] per kv token -> block_idx
-                #input_length=None,  # TODO
-                #max_seqlen=None,  # TODO
-                #prompt_lens=None,  # TODO
+                # block_tables=None,  # TODO: [num_seqs, max_blocks_per_seq]
+                # slot_maps=None,  # [num_tokens] per kv token -> block_idx
+                # input_length=None,  # TODO
+                max_seqlen_q=max_seqlen_q,
+                max_seqlen_kv=max_seqlen_kv,
                 batch_data=batch_data,
                 seq_data=seq_data,
                 kv_buffer=kv_buffer,
