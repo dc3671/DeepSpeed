@@ -15,7 +15,7 @@ except Exception:
 import json
 import os
 from pathlib import Path
-from typing import Optional, Tuple
+from typing import Optional, Tuple, List
 
 import torch
 from huggingface_hub import snapshot_download
@@ -333,12 +333,6 @@ class XPUModel(DSTransformerModelBase, Module):
     """
 
     def _prepare_position_ids(self, batch_size: int, seq_data: torch.Tensor):
-        """
-        For each sequence in the batch, we store the start token in the batch, the number of tokens,
-        the number of tokens in the history of this sequence, and an unused 4th reserved for alignment.
-        For the above example this would give:
-        [[0, 4, H0, X], [4, 1, H1, X], [5, 3, H2, X]]
-        """
         position_ids = []
         for seq_id in range(batch_size):
             # [H0 ~ H0+4], [H1, H1+1], ...
@@ -348,6 +342,44 @@ class XPUModel(DSTransformerModelBase, Module):
         position_ids = torch.tensor(position_ids, device=get_accelerator().device_name(),
                                     dtype=torch.long).view(1, len(position_ids))
         return position_ids
+
+    def _prepare_atoms(self, batch_size: int, seq_data: torch.Tensor, kv_buffer: List[torch.Tensor]) -> torch.Tensor:
+        atoms = torch.empty((self.max_sequence_length, 8), dtype=torch.int32)
+
+        n_atoms = 0
+        block_size = self.kv_block_size
+        const_lower16bits = 2**16 - 1
+        for seq_id in range(batch_size):
+            start_idx = seq_data[seq_id][0]
+            n_tokens = seq_data[seq_id][1]
+            seen_tokens = seq_data[seq_id][2]
+            kv_tensor = kv_buffer[seq_id]
+
+            seq_atoms = ceil_div(n_tokens, block_size)
+
+            for _ in range(seq_atoms):
+                # block_idx_list
+                kv_ptr = kv_tensor.data_ptr()
+                atoms[n_atoms][0] = kv_ptr >> 16
+                atoms[n_atoms][1] = kv_ptr & const_lower16bits
+                # q_start_idx
+                atoms[n_atoms][2] = start_idx
+                # q_len
+                q_len = min(n_tokens, block_size)
+                atoms[n_atoms][3] = q_len
+                # kv_blocks = current total q_len with global start_idx
+                atoms[n_atoms][4] = ceil_div(start_idx + q_len, block_size)
+                # total_extent
+                atoms[n_atoms][5] = start_idx + q_len
+                # global_q_idx
+                atoms[n_atoms][6] = start_idx
+
+                # update seq_data
+                start_idx += q_len
+                seen_tokens += q_len
+                n_tokens -= q_len
+                n_atoms += 1
+        return atoms
 
     def _forward_embed(self, ragged_batch: RaggedBatchWrapper) -> torch.Tensor:
         """
@@ -385,6 +417,7 @@ class XPUModel(DSTransformerModelBase, Module):
         kv_buffer = wrapped_batch.kv_buffer()
         cur_seq_len = wrapped_batch.current_sequences
         position_ids = self._prepare_position_ids(batch_size, seq_data)
+        atoms = self._prepare_atoms(batch_size, seq_data, kv_buffer)
         max_seqlen_q = max([seq_data[i][1].item() for i in range(batch_size)])
         max_seqlen_kv = max([seq_data[i][1].item() + seq_data[i][2].item() for i in range(batch_size)])
 
@@ -406,6 +439,7 @@ class XPUModel(DSTransformerModelBase, Module):
                 batch_data=batch_data,
                 seq_data=seq_data,
                 kv_buffer=kv_buffer,
+                atoms=atoms,
                 use_cache=True,
             )
 
