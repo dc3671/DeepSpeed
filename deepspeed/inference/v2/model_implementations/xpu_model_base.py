@@ -277,6 +277,10 @@ class XPUModel(DSTransformerModelBase, Module):
     """
 
     @property
+    def q_block_size(self):
+        return 8
+
+    @property
     def kv_block_size(self):
         if self.head_size <= 64:
             return 128
@@ -344,42 +348,38 @@ class XPUModel(DSTransformerModelBase, Module):
         return position_ids
 
     def _prepare_atoms(self, batch_size: int, seq_data: torch.Tensor, kv_buffer: List[torch.Tensor]) -> torch.Tensor:
-        atoms = torch.empty((self.max_sequence_length, 8), dtype=torch.int32)
-
+        atoms = []
         n_atoms = 0
-        block_size = self.kv_block_size
-        const_lower16bits = 2**16 - 1
         for seq_id in range(batch_size):
-            start_idx = seq_data[seq_id][0]
-            n_tokens = seq_data[seq_id][1]
-            seen_tokens = seq_data[seq_id][2]
-            kv_tensor = kv_buffer[seq_id]
+            start_idx = seq_data[seq_id][0].item()
+            n_tokens = seq_data[seq_id][1].item()
+            seen_tokens = seq_data[seq_id][2].item()
 
-            seq_atoms = ceil_div(n_tokens, block_size)
+            seq_atoms = ceil_div(n_tokens, self.q_block_size)
 
             for _ in range(seq_atoms):
-                # block_idx_list
-                kv_ptr = kv_tensor.data_ptr()
-                atoms[n_atoms][0] = kv_ptr >> 16
-                atoms[n_atoms][1] = kv_ptr & const_lower16bits
+                atom = [0] * 8
+                # seq_id
+                atom[0] = seq_id
                 # q_start_idx
-                atoms[n_atoms][2] = start_idx
+                atom[1] = start_idx
                 # q_len
-                q_len = min(n_tokens, block_size)
-                atoms[n_atoms][3] = q_len
+                q_len = min(n_tokens, self.q_block_size)
+                atom[2] = q_len
                 # kv_blocks = current total q_len with global start_idx
-                atoms[n_atoms][4] = ceil_div(start_idx + q_len, block_size)
+                atom[3] = -(-(seen_tokens + q_len) // self.kv_block_size)
                 # total_extent
-                atoms[n_atoms][5] = start_idx + q_len
+                atom[4] = seen_tokens + q_len
                 # global_q_idx
-                atoms[n_atoms][6] = start_idx
+                atom[5] = seen_tokens
 
                 # update seq_data
                 start_idx += q_len
                 seen_tokens += q_len
                 n_tokens -= q_len
                 n_atoms += 1
-        return atoms
+                atoms.append(atom)
+        return torch.tensor(atoms, dtype=torch.int, device=get_accelerator().device_name())
 
     def _forward_embed(self, ragged_batch: RaggedBatchWrapper) -> torch.Tensor:
         """
@@ -420,6 +420,12 @@ class XPUModel(DSTransformerModelBase, Module):
         atoms = self._prepare_atoms(batch_size, seq_data, kv_buffer)
         max_seqlen_q = max([seq_data[i][1].item() for i in range(batch_size)])
         max_seqlen_kv = max([seq_data[i][1].item() + seq_data[i][2].item() for i in range(batch_size)])
+        max_blocks = ceil_div(max_seqlen_kv, self.kv_block_size)
+        kv_buffer_new = torch.empty((batch_size, max_blocks),
+                                    device=get_accelerator().device_name(),
+                                    dtype=torch.int32)
+        for i in range(batch_size):
+            kv_buffer_new[i] = kv_buffer[i][0, :max_blocks]
 
         hidden_states = self.model.model.embed_tokens(input_ids)
 
@@ -438,7 +444,7 @@ class XPUModel(DSTransformerModelBase, Module):
                 max_seqlen_kv=max_seqlen_kv,
                 batch_data=batch_data,
                 seq_data=seq_data,
-                kv_buffer=kv_buffer,
+                kv_buffer=kv_buffer_new,
                 atoms=atoms,
                 use_cache=True,
             )
