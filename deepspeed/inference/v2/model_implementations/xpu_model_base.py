@@ -379,7 +379,35 @@ class XPUModel(DSTransformerModelBase, Module):
                 n_tokens -= q_len
                 n_atoms += 1
                 atoms.append(atom)
+        if get_accelerator().device_name()[-1] == "0":
+            print(">>> atoms", atoms)
         return torch.tensor(atoms, dtype=torch.int, device=get_accelerator().device_name())
+
+    def _prepare_slot_mapping(self, batch_size: int, seq_data: torch.Tensor,
+                              kv_buffer: List[torch.Tensor]) -> torch.Tensor:
+
+        slot_mapping = []
+        for seq_id in range(batch_size):
+            n_tokens = seq_data[seq_id][1].item()
+            seen_tokens = seq_data[seq_id][2].item()
+
+            start_block_idx = seen_tokens // self.kv_block_size
+            end_block_id = (n_tokens + seen_tokens + self.kv_block_size - 1) // self.kv_block_size
+            local_start_idx = 0
+
+            for block_idx in range(start_block_idx, end_block_id):
+                mapped_block_id = kv_buffer[seq_id][0, block_idx].item()
+                block_start_idx = seen_tokens % self.kv_block_size
+                n_tokens_to_check = min(self.kv_block_size - block_start_idx, n_tokens - local_start_idx)
+                block_end_idx = block_start_idx + n_tokens_to_check
+                slot_mapping += [
+                    i + mapped_block_id * self.kv_block_size for i in range(block_start_idx, block_end_idx)
+                ]
+                seen_tokens += n_tokens_to_check
+                local_start_idx += n_tokens_to_check
+        if get_accelerator().device_name()[-1] == "0":
+            print(">>> slot_mapping", slot_mapping)
+        return torch.tensor(slot_mapping, dtype=torch.int, device=get_accelerator().device_name())
 
     def _forward_embed(self, ragged_batch: RaggedBatchWrapper) -> torch.Tensor:
         """
@@ -406,10 +434,13 @@ class XPUModel(DSTransformerModelBase, Module):
         return self.model.lm_head(hidden_states)
 
     def forward(self, wrapped_batch: RaggedBatchWrapper) -> torch.Tensor:
+        os.environ["PTI_ENABLE_COLLECTION"] = "1"
         # model_kwargs = {}
         # model_inputs = self.model.prepare_inputs_for_generation(wrapped_batch.input_ids(), **model_kwargs)
         # model_outputs = self.model(**model_inputs)
         input_ids = wrapped_batch.input_ids()
+        if input_ids.device.index == 0:
+            print(">>> input_ids shape", input_ids.shape)
         batch_data = wrapped_batch.batch_metadata_buffer(False)
         # total_tokens = batch_data[0].item()
         batch_size = batch_data[1].item()
@@ -418,6 +449,7 @@ class XPUModel(DSTransformerModelBase, Module):
         cur_seq_len = wrapped_batch.current_sequences
         position_ids = self._prepare_position_ids(batch_size, seq_data)
         atoms = self._prepare_atoms(batch_size, seq_data, kv_buffer)
+        slot_mapping = self._prepare_slot_mapping(batch_size, seq_data, kv_buffer)
         max_seqlen_q = max([seq_data[i][1].item() for i in range(batch_size)])
         max_seqlen_kv = max([seq_data[i][1].item() + seq_data[i][2].item() for i in range(batch_size)])
         max_blocks = ceil_div(max_seqlen_kv, self.kv_block_size)
@@ -446,6 +478,7 @@ class XPUModel(DSTransformerModelBase, Module):
                 seq_data=seq_data,
                 kv_buffer=kv_buffer_new,
                 atoms=atoms,
+                slot_mapping=slot_mapping,
                 use_cache=True,
             )
 
@@ -456,4 +489,5 @@ class XPUModel(DSTransformerModelBase, Module):
         hidden_states = self.model.lm_head(hidden_states)
         # [bs*beam, seq, hidden_size] -> [seq, hidden_size]
         hidden_states = hidden_states.view(-1, hidden_states.shape[-1])
+        os.unsetenv("PTI_ENABLE_COLLECTION")
         return hidden_states
