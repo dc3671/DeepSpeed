@@ -21,7 +21,7 @@ class RaggedUtilsBuilder(SYCLOpBuilder):
         class RaggedOPS():
 
             def allocate_fast_host_buffer(self, device_mirror):
-                return device_mirror
+                return device_mirror.cpu()
 
             def allocate_view_on(self, tensor, buffer, offset):
                 return buffer[offset:offset + tensor.numel()].view(tensor.shape)

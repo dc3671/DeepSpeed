@@ -83,6 +83,8 @@ class BlockedAllocator:
         """
         if isinstance(blocks, int):
             blocks = [blocks]
+        if isinstance(blocks, torch.Tensor):
+            blocks = blocks.tolist()
 
         for block in blocks:
             # Parse all blocks for validity before mutating the list.

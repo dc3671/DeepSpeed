@@ -256,8 +256,8 @@ class IMPIRunner(MultiNodeRunner):
     def validate_args(self):
         super().validate_args()
         #TODO: Allow for include/exclude at node-level but not gpu-level
-        if self.args.include != "" or self.args.exclude != "":
-            raise ValueError(f"{self.name} backend does not support worker include/exclusion")
+        # if self.args.include != "" or self.args.exclude != "":
+        #     raise ValueError(f"{self.name} backend does not support worker include/exclusion")
 
         if self.args.num_nodes != -1 or self.args.num_gpus != -1:
             raise ValueError(f"{self.name} backend does not support limiting num nodes/gpus")

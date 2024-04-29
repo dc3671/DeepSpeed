@@ -379,8 +379,6 @@ class XPUModel(DSTransformerModelBase, Module):
                 n_tokens -= q_len
                 n_atoms += 1
                 atoms.append(atom)
-        if get_accelerator().device_name()[-1] == "0":
-            print(">>> atoms", atoms)
         return torch.tensor(atoms, dtype=torch.int, device=get_accelerator().device_name())
 
     def _prepare_slot_mapping(self, batch_size: int, seq_data: torch.Tensor,
@@ -405,8 +403,6 @@ class XPUModel(DSTransformerModelBase, Module):
                 ]
                 seen_tokens += n_tokens_to_check
                 local_start_idx += n_tokens_to_check
-        if get_accelerator().device_name()[-1] == "0":
-            print(">>> slot_mapping", slot_mapping)
         return torch.tensor(slot_mapping, dtype=torch.int, device=get_accelerator().device_name())
 
     def _forward_embed(self, ragged_batch: RaggedBatchWrapper) -> torch.Tensor:
@@ -439,8 +435,6 @@ class XPUModel(DSTransformerModelBase, Module):
         # model_inputs = self.model.prepare_inputs_for_generation(wrapped_batch.input_ids(), **model_kwargs)
         # model_outputs = self.model(**model_inputs)
         input_ids = wrapped_batch.input_ids()
-        if input_ids.device.index == 0:
-            print(">>> input_ids shape", input_ids.shape)
         batch_data = wrapped_batch.batch_metadata_buffer(False)
         # total_tokens = batch_data[0].item()
         batch_size = batch_data[1].item()

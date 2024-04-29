@@ -217,6 +217,20 @@ class DSSequenceDescriptor(BaseSequenceDescriptor):
             block_ids.append(allocation_group[:num_blocks])
         return torch.cat(block_ids)
 
+    # get host block_ids list for free
+    def all_block_ids_shadow(self, cache_group: int = 0) -> List[int]:
+        """
+        Return the Tensor containing all block IDs for this sequence in the specified cache group.
+
+        Arguments:
+            cache_group (int): The cache group to query.
+        """
+        block_ids = []
+        for allocation_group, num_blocks in zip(self._kv_cache_ids_shadow[cache_group],
+                                                self._blocks_per_allocation_group[cache_group]):
+            block_ids += allocation_group[:num_blocks].tolist()
+        return block_ids
+
     def pre_forward(self, num_tokens: int) -> None:
         """
         Update the state of the sequence before a forward pass.

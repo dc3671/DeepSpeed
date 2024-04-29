@@ -118,7 +118,7 @@ class DSStateManager:
 
         seq = self._seqs[uid]
         for i in range(self.n_kv_cache_groups):
-            self._kv_cache.free(seq.all_block_ids(cache_group=i), cache_group=i)
+            self._kv_cache.free(seq.all_block_ids_shadow(cache_group=i), cache_group=i)
 
         self._tracking_allocator.free(seq.tracking_id)
         del self._seqs[uid]

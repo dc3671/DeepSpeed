@@ -142,7 +142,7 @@ class DSStateManagerConfig(DeepSpeedConfigModel):
     than the ``max_ragged_sequence_count``.
     """
 
-    max_ragged_batch_size: PositiveInt = 768
+    max_ragged_batch_size: PositiveInt = 1024
     """
     The maximum number of tokens that can be contained in a single ragged batch. Passing
     a larger value than this will raise an exception that must be handled by the runtime.
