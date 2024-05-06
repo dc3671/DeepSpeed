@@ -340,14 +340,22 @@ class XPUModel(DSTransformerModelBase, Module):
         position_ids = []
         for seq_id in range(batch_size):
             # [H0 ~ H0+4], [H1, H1+1], ...
-            n_tokens = seq_data[seq_id][1]
-            seen_tokens = seq_data[seq_id][2]
+            n_tokens = seq_data[seq_id][1].item()
+            seen_tokens = seq_data[seq_id][2].item()
             position_ids.extend(range(seen_tokens, seen_tokens + n_tokens))
         position_ids = torch.tensor(position_ids, device=get_accelerator().device_name(),
                                     dtype=torch.long).view(1, len(position_ids))
         return position_ids
 
-    def _prepare_atoms(self, batch_size: int, seq_data: torch.Tensor, kv_buffer: List[torch.Tensor]) -> torch.Tensor:
+    def _prepare_block_tables(self, kv_buffer: List[torch.Tensor], batch_size: int, max_blocks: int):
+        block_tables = torch.empty((batch_size, max_blocks),
+                                   device="cpu",
+                                   dtype=torch.int32)
+        for i in range(batch_size):
+            block_tables[i] = kv_buffer[i][0, :max_blocks]
+        return block_tables.to(device=get_accelerator().device_name())
+
+    def _prepare_atoms(self, batch_size: int, seq_data: torch.Tensor) -> torch.Tensor:
         atoms = []
         n_atoms = 0
         for seq_id in range(batch_size):
@@ -430,58 +438,41 @@ class XPUModel(DSTransformerModelBase, Module):
         return self.model.lm_head(hidden_states)
 
     def forward(self, wrapped_batch: RaggedBatchWrapper) -> torch.Tensor:
-        os.environ["PTI_ENABLE_COLLECTION"] = "1"
-        # model_kwargs = {}
-        # model_inputs = self.model.prepare_inputs_for_generation(wrapped_batch.input_ids(), **model_kwargs)
-        # model_outputs = self.model(**model_inputs)
+        # os.environ["PTI_ENABLE_COLLECTION"] = "1"
         input_ids = wrapped_batch.input_ids()
-        batch_data = wrapped_batch.batch_metadata_buffer(False)
-        # total_tokens = batch_data[0].item()
-        batch_size = batch_data[1].item()
+        batch_size = wrapped_batch.current_sequences
         seq_data = wrapped_batch.inflight_seq_descriptors(False)
         kv_buffer = wrapped_batch.kv_buffer()
-        cur_seq_len = wrapped_batch.current_sequences
-        position_ids = self._prepare_position_ids(batch_size, seq_data)
-        atoms = self._prepare_atoms(batch_size, seq_data, kv_buffer)
-        slot_mapping = self._prepare_slot_mapping(batch_size, seq_data, kv_buffer)
-        max_seqlen_q = max([seq_data[i][1].item() for i in range(batch_size)])
-        max_seqlen_kv = max([seq_data[i][1].item() + seq_data[i][2].item() for i in range(batch_size)])
+        seqlen_kv = [seq_data[i][1].item() + seq_data[i][2].item() for i in range(batch_size)]
+        seq_ids = [seq_data[i][0].item() + seq_data[i][1].item() - 1 for i in range(batch_size)]
+        max_seqlen_kv = max(seqlen_kv)
         max_blocks = ceil_div(max_seqlen_kv, self.kv_block_size)
-        kv_buffer_new = torch.empty((batch_size, max_blocks),
-                                    device=get_accelerator().device_name(),
-                                    dtype=torch.int32)
-        for i in range(batch_size):
-            kv_buffer_new[i] = kv_buffer[i][0, :max_blocks]
+
+        block_tables = self._prepare_block_tables(kv_buffer, batch_size, max_blocks)
+        slot_mapping = self._prepare_slot_mapping(batch_size, seq_data, kv_buffer)
+        position_ids = self._prepare_position_ids(batch_size, seq_data)
+        atoms = self._prepare_atoms(batch_size, seq_data)
 
         hidden_states = self.model.model.embed_tokens(input_ids)
 
         for idx, decoder_layer in enumerate(self.model.model.layers):
-            # actual(maybe): (num_blocks, config.block_size, 2, num_heads, head_size)
-            # expect: [2, num_blocks, num_heads, head_size, block_size]
+            # cache_shape: (num_blocks, config.block_size, 2, num_heads, head_size)
             kv_cache = self.state_manager.get_cache(idx)
             hidden_states = decoder_layer(
                 hidden_states,
                 position_ids=position_ids,
                 kv_cache=kv_cache,
-                # block_tables=None,  # TODO: [num_seqs, max_blocks_per_seq]
-                # slot_maps=None,  # [num_tokens] per kv token -> block_idx
-                # input_length=None,  # TODO
-                max_seqlen_q=max_seqlen_q,
                 max_seqlen_kv=max_seqlen_kv,
-                batch_data=batch_data,
-                seq_data=seq_data,
-                kv_buffer=kv_buffer_new,
+                block_tables=block_tables,  # [num_seqs, max_blocks_per_seq]
                 atoms=atoms,
-                slot_mapping=slot_mapping,
-                use_cache=True,
+                slot_mapping=slot_mapping,  # [num_tokens] per kv token -> block_idx
             )
 
         hidden_states = self.model.model.norm(hidden_states)
         # gather token output according to wrapped_batch
-        seq_ids = [seq_data[i][0].item() + seq_data[i][1].item() - 1 for i in range(cur_seq_len)]
-        hidden_states = hidden_states[:, seq_ids, :].view(cur_seq_len, 1, -1)
+        hidden_states = hidden_states[:, seq_ids, :].view(batch_size, 1, -1)
         hidden_states = self.model.lm_head(hidden_states)
         # [bs*beam, seq, hidden_size] -> [seq, hidden_size]
         hidden_states = hidden_states.view(-1, hidden_states.shape[-1])
-        os.unsetenv("PTI_ENABLE_COLLECTION")
+        # os.unsetenv("PTI_ENABLE_COLLECTION")
         return hidden_states

@@ -200,8 +200,8 @@ class DSSequenceDescriptor(BaseSequenceDescriptor):
         return self._kv_cache_ids[cache_group].data_ptr()
 
     @property
-    def kv_blocks(self, cache_group: int = 0) -> int:
-        return self._kv_cache_ids[cache_group]
+    def kv_blocks_shadow(self, cache_group: int = 0) -> int:
+        return self._kv_cache_ids_shadow[cache_group]
 
     #TODO: this was previously a property but causing issues with PR-4668 need to consult w. Connor
     def all_block_ids(self, cache_group: int = 0) -> torch.Tensor:

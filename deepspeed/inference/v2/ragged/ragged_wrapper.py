@@ -172,7 +172,7 @@ class RaggedBatchWrapper:
         self._token_to_seq_storage_shadow_buf.extend([self.current_sequences] * seq_tokens)
 
         self._kv_blocks_ptr_buf.append(seq_descriptor.kv_blocks_ptr)
-        self._kv_blocks_buf.append(seq_descriptor.kv_blocks)
+        self._kv_blocks_buf.append(seq_descriptor.kv_blocks_shadow)
 
         self._current_tokens += seq_tokens
         self._current_sequences += 1
