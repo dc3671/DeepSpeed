@@ -136,7 +136,7 @@ class MemoryConfig(DeepSpeedConfigModel):
 
 class DSStateManagerConfig(DeepSpeedConfigModel):
 
-    max_tracked_sequences: PositiveInt = 2048
+    max_tracked_sequences: PositiveInt = 24576
     """
     How many sequences this engine will track simultaneously. This limit should be greater
     than the ``max_ragged_sequence_count``.

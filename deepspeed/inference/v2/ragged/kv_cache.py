@@ -107,9 +107,9 @@ class BlockedKVCache:
                     f"Insufficient memory to allocate KV-caches. Required: {total_per_block_footprint}, Available: {available_kv_memory}"
                 )
 
-            #num_blocks = available_kv_memory // total_per_block_footprint
+            num_blocks = 0.8 * available_kv_memory // total_per_block_footprint
             # TODO: reduce memory usage
-            num_blocks = 1000
+            # num_blocks = 1000
 
             # In a multi-process setting, we need to ensure that all processes have the same
             # KV cache capacity to ensure scheduling guarantees are equivalent on all ranks.
