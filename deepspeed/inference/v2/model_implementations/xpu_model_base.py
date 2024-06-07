@@ -358,9 +358,12 @@ class XPUModel(DSTransformerModelBase, Module):
     def _prepare_atoms(self, batch_size: int, seq_data: torch.Tensor) -> torch.Tensor:
         atoms = []
         n_atoms = 0
+        decode_only = True
         for seq_id in range(batch_size):
             start_idx = seq_data[seq_id][0].item()
             n_tokens = seq_data[seq_id][1].item()
+            if n_tokens > 1:
+                decode_only = False
             seen_tokens = seq_data[seq_id][2].item()
 
             seq_atoms = ceil_div(n_tokens, self.q_block_size)
@@ -387,7 +390,7 @@ class XPUModel(DSTransformerModelBase, Module):
                 n_tokens -= q_len
                 n_atoms += 1
                 atoms.append(atom)
-        return torch.tensor(atoms, dtype=torch.int, device=get_accelerator().device_name())
+        return torch.tensor(atoms, dtype=torch.int, device=get_accelerator().device_name()), decode_only
 
     def _prepare_slot_mapping(self, batch_size: int, seq_data: torch.Tensor,
                               kv_buffer: List[torch.Tensor]) -> torch.Tensor:
@@ -451,7 +454,7 @@ class XPUModel(DSTransformerModelBase, Module):
         block_tables = self._prepare_block_tables(kv_buffer, batch_size, max_blocks)
         slot_mapping = self._prepare_slot_mapping(batch_size, seq_data, kv_buffer)
         position_ids = self._prepare_position_ids(batch_size, seq_data)
-        atoms = self._prepare_atoms(batch_size, seq_data)
+        atoms, decode_only = self._prepare_atoms(batch_size, seq_data)
 
         hidden_states = self.model.model.embed_tokens(input_ids)
 
@@ -466,6 +469,7 @@ class XPUModel(DSTransformerModelBase, Module):
                 block_tables=block_tables,  # [num_seqs, max_blocks_per_seq]
                 atoms=atoms,
                 slot_mapping=slot_mapping,  # [num_tokens] per kv token -> block_idx
+                decode_only=decode_only,
             )
 
         hidden_states = self.model.model.norm(hidden_states)
